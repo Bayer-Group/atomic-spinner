@@ -1,17 +1,5 @@
 import * as React from 'react';
 
-const defaultColors = ['red', 'green', 'blue'];
-let unusedColors: string[] = [];
-
-const getRandomElectronPathOrbitTime = () => 2 + Math.random() * 1;
-const getNextRandomColor = () => {
-  if (!unusedColors.length) {
-    unusedColors = [...defaultColors];
-  }
-
-  return unusedColors.splice(Math.floor(Math.random() * (unusedColors.length)), 1)[0];
-};
-
 export type NucleusProps = {
   particleFillColor: string,
   particleBorderColor: string,
@@ -69,15 +57,26 @@ export type ElectronProps = {
   rotationAngle: number,
   orbitTime: number,
   spacetimeOffset: number,
-  size: number
+  size: number,
+  colorPalette: string[]
 }
 
 export function Electron({
-  rotationAngle, orbitTime, spacetimeOffset, size
+  rotationAngle, orbitTime, spacetimeOffset, size, colorPalette
 }: ElectronProps): JSX.Element {
+  let unusedColors: string[] = [];
+
+  const getRandomElectronColor = () => {
+    if (!unusedColors.length) {
+      unusedColors = [...colorPalette];
+    }
+
+    return unusedColors.splice(Math.floor(Math.random() * (unusedColors.length)), 1)[0];
+  };
+
   return (
     <g transform={`rotate(${rotationAngle} 50 50)`}>
-      <circle cx="50" cy="15" r={size} fill={getNextRandomColor()}>
+      <circle cx="50" cy="15" r={size} fill={getRandomElectronColor()}>
         <animateMotion
           dur={`${orbitTime}s`}
           repeatCount="indefinite"
@@ -90,10 +89,28 @@ export function Electron({
   );
 }
 
-function LoadingAtom({
+export type AtomicSpinnerProps = {
+  atomSize: number,
+  displayElectronPaths: boolean,
+  displayNucleus: boolean,
+  electronColorPalette: string[],
+  electronPathCount: number,
+  electronPathColor: string,
+  electronPathWidth: number,
+  electronsPerPath: number,
+  electronSize: number,
+  nucleusParticleFillColor: string,
+  nucleusParticleBorderColor: string,
+  nucleusParticleCount: number,
+  nucleusParticleSize: number,
+  nucleusDistanceFromCenter: number
+}
+
+function AtomicSpinner({
   atomSize = 200,
   displayElectronPaths = true,
   displayNucleus = true,
+  electronColorPalette = ['#0081C9', '#5BC0F8', '#86E5FF'],
   electronPathCount = 3,
   electronPathColor = '#707070',
   electronPathWidth = 0.5,
@@ -104,12 +121,12 @@ function LoadingAtom({
   nucleusParticleCount = 6,
   nucleusParticleSize = 2.5,
   nucleusDistanceFromCenter = 2.5
-}) {
+}: AtomicSpinnerProps) {
   const electronPaths = Array.from({ length: electronPathCount })
     .map((_, i) => ({
       rotationAngle: 0 + i * (180 / electronPathCount),
       electronCount: electronsPerPath,
-      electronOrbitTime: getRandomElectronPathOrbitTime()
+      electronOrbitTime: 2 + Math.random() * 1
     }));
 
   return (
@@ -153,10 +170,11 @@ function LoadingAtom({
               orbitTime={electronOrbitTime}
               size={electronSize}
               spacetimeOffset={-electronOrbitTime + i * (electronOrbitTime / (electronCount))}
+              colorPalette={electronColorPalette}
             />
           )))}
     </svg>
   );
 }
 
-export default React.memo(LoadingAtom);
+export default React.memo(AtomicSpinner);

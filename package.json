@@ -1,16 +1,17 @@
 {
   "name": "atomic-spinner",
-  "version": "0.0.0",
+  "version": "1.0.3",
   "description": "Loading spinner that looks like an atom",
+  "author": "David Lounsbrough",
   "license": "MIT",
   "repository": "Codenough-LLC/atomic-spinner",
-  "main": "dist/index.js",
+  "main": "dist/index.min.js",
   "engines": {
     "node": ">=14"
   },
   "scripts": {
-    "build": "rollup -c",
-    "start": "rollup -c -w"
+    "build": "rm -rf dist && tsc && pnpm minify",
+    "minify": "uglifyjs --compress -o dist/index.min.js -- dist/index.js"
   },
   "keywords": [
     "atomic",
@@ -28,19 +29,15 @@
     "dist"
   ],
   "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@types/react": "^16.3.13",
-    "@types/react-dom": "^16.0.5",
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "rollup": "^1.29.0",
-    "rollup-plugin-typescript2": "^0.25.3",
-    "tslib": "^2.4.1",
-    "typescript": "^2.8.3"
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^2.9.2",
+    "uglify-js": "^3.17.4"
   }
 }
