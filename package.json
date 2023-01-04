@@ -1,4 +1,46 @@
 {
   "name": "atomic-spinner",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "description": "Loading spinner that looks like an atom",
+  "license": "MIT",
+  "repository": "Codenough-LLC/atomic-spinner",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w"
+  },
+  "keywords": [
+    "atomic",
+    "atom",
+    "chemistry",
+    "loader",
+    "loading",
+    "spinner",
+    "npm",
+    "package",
+    "react",
+    "typescript"
+  ],
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.3.13",
+    "@types/react-dom": "^16.0.5",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "tslib": "^2.4.1",
+    "typescript": "^2.8.3"
+  }
 }
