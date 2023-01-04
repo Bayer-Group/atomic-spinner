@@ -26,20 +26,20 @@ import AtomicSpinner from 'atomic-spinner'
 function MyComponent() {
   return (
     <AtomicSpinner
-      atomSize = 200,
-      displayElectronPaths = true,
-      displayNucleus = true,
-      electronColorPalette = ['#0081C9', '#5BC0F8', '#86E5FF'],
-      electronPathCount = 3,
-      electronPathColor = '#707070',
-      electronPathWidth = 0.5,
-      electronsPerPath = 2,
-      electronSize = 1.5,
-      nucleusParticleFillColor = '#707070',
-      nucleusParticleBorderColor = '#999',
-      nucleusParticleCount = 6,
-      nucleusParticleSize = 2.5,
-      nucleusDistanceFromCenter = 2.5
+      atomSize={200}
+      displayElectronPaths
+      displayNucleus
+      electronColorPalette={[ '#0081C9', '#5BC0F8', '#86E5FF' ]}
+      electronPathCount={3}
+      electronPathColor="#707070"
+      electronPathWidth={0.5}
+      electronsPerPath={2}
+      electronSize={1.5}
+      nucleusParticleFillColor="#707070"
+      nucleusParticleBorderColor="#999"
+      nucleusParticleCount={6}
+      nucleusParticleSize={2.5}
+      nucleusDistanceFromCenter={2.5}
     />
   )
 }
