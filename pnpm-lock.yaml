@@ -7,7 +7,6 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   typescript: ^2.9.2
-  uglify-js: ^3.17.4
 
 devDependencies:
   '@types/react': 18.0.26
@@ -16,7 +15,6 @@ devDependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 2.9.2
-  uglify-js: 3.17.4
 
 packages:
 
@@ -341,12 +339,6 @@ packages:
   /typescript/2.9.2:
     resolution: {integrity: sha512-Gr4p6nFNaoufRIY4NMdpQRNmgxVIGMs4Fcu/ujdYk3nAZqk7supzBE9idmvfZIlH/Cuj//dvi+019qEue9lV0w==}
     engines: {node: '>=4.2.0'}
-    hasBin: true
-    dev: true
-
-  /uglify-js/3.17.4:
-    resolution: {integrity: sha512-T9q82TJI9e/C1TAxYvfb16xO120tMVFZrGA3f9/P4424DNu6ypK103y0GPFVa17yotwSyZW5iYXgjYHkGrJW/g==}
-    engines: {node: '>=0.8.0'}
     hasBin: true
     dev: true
 
