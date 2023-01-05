@@ -10,7 +10,7 @@ export type NucleusProps = {
 
 export function Nucleus({
   particleFillColor, particleBorderColor, particleCount, particleSize, distanceFromCenter
-}: NucleusProps): JSX.Element {
+}: NucleusProps) {
   const startingAngle = Math.random() * 2 * Math.PI;
   const particles: JSX.Element[] = Array.from({ length: particleCount })
     .map((_, i) => {
@@ -41,17 +41,17 @@ export type ElectronPathProps = {
   color: string,
   width: number,
   rotationAngle: number
-}
+};
 
-export function ElectronPath({
+export const ElectronPath = ({
   color, width, rotationAngle
-}: ElectronPathProps): JSX.Element {
+}: ElectronPathProps) => {
   return (
     <g transform={`rotate(${rotationAngle} 50 50)`}>
       <use xlinkHref="#electronPath" stroke={color} strokeWidth={width} />
     </g>
   );
-}
+};
 
 export type ElectronProps = {
   rotationAngle: number,
@@ -59,11 +59,11 @@ export type ElectronProps = {
   spacetimeOffset: number,
   size: number,
   colorPalette: string[]
-}
+};
 
-export function Electron({
+export const Electron = ({
   rotationAngle, orbitTime, spacetimeOffset, size, colorPalette
-}: ElectronProps): JSX.Element {
+}: ElectronProps) => {
   let unusedColors: string[] = [];
 
   const getRandomElectronColor = () => {
@@ -87,26 +87,26 @@ export function Electron({
       </circle>
     </g>
   );
-}
+};
 
 export type AtomicSpinnerProps = {
-  atomSize: number,
-  displayElectronPaths: boolean,
-  displayNucleus: boolean,
-  electronColorPalette: string[],
-  electronPathCount: number,
-  electronPathColor: string,
-  electronPathWidth: number,
-  electronsPerPath: number,
-  electronSize: number,
-  nucleusParticleFillColor: string,
-  nucleusParticleBorderColor: string,
-  nucleusParticleCount: number,
-  nucleusParticleSize: number,
-  nucleusDistanceFromCenter: number
-}
+  atomSize?: number,
+  displayElectronPaths?: boolean,
+  displayNucleus?: boolean,
+  electronColorPalette?: string[],
+  electronPathCount?: number,
+  electronPathColor?: string,
+  electronPathWidth?: number,
+  electronsPerPath?: number,
+  electronSize?: number,
+  nucleusParticleFillColor?: string,
+  nucleusParticleBorderColor?: string,
+  nucleusParticleCount?: number,
+  nucleusParticleSize?: number,
+  nucleusDistanceFromCenter?: number
+};
 
-function AtomicSpinner({
+const AtomicSpinner = ({
   atomSize = 200,
   displayElectronPaths = true,
   displayNucleus = true,
@@ -121,7 +121,7 @@ function AtomicSpinner({
   nucleusParticleCount = 6,
   nucleusParticleSize = 2.5,
   nucleusDistanceFromCenter = 2.5
-}: AtomicSpinnerProps) {
+}: AtomicSpinnerProps) => {
   const electronPaths = Array.from({ length: electronPathCount })
     .map((_, i) => ({
       rotationAngle: 0 + i * (180 / electronPathCount),
@@ -175,6 +175,6 @@ function AtomicSpinner({
           )))}
     </svg>
   );
-}
+};
 
 export default React.memo(AtomicSpinner);

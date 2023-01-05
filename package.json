@@ -1,17 +1,21 @@
 {
   "name": "atomic-spinner",
-  "version": "1.0.6",
+  "version": "1.0.10",
   "description": "Loading spinner that looks like an atom",
   "author": "David Lounsbrough",
   "license": "MIT",
   "repository": "Codenough-LLC/atomic-spinner",
-  "main": "dist/index.min.js",
+  "main": "dist/index",
+  "typings": "dist/index",
   "engines": {
     "node": ">=14"
   },
   "scripts": {
     "build": "rm -rf dist && tsc && pnpm minify",
-    "minify": "uglifyjs --compress -o dist/index.min.js -- dist/index.js"
+    "minify": "uglifyjs --compress -o dist/index.min.js -- dist/index.js",
+    "publish-npm": "pnpm build && npm publish",
+    "build-demo": "pnpm --prefix demo build",
+    "deploy-demo": "gh-pages -d demo/build"
   },
   "keywords": [
     "atomic",
@@ -35,6 +39,7 @@
   "devDependencies": {
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^2.9.2",

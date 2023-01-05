@@ -3,7 +3,7 @@
   "compilerOptions": {
     "jsx": "react",
     "outDir": "dist",
-    "target": "ES2015",
+    "target": "es2015",
     "module": "commonjs",
     "strict": true,
     "declaration": true,
