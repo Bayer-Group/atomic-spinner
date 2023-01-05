@@ -10,7 +10,6 @@ import {
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { HexColorPicker, HexColorInput } from 'react-colorful';
-import './App.css';
 import React, { useCallback, useState } from 'react';
 
 function App() {
