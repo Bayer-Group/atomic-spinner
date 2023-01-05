@@ -1,6 +1,6 @@
 {
   "name": "atomic-spinner",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Loading spinner that looks like an atom",
   "author": "David Lounsbrough",
   "license": "MIT",
@@ -32,11 +32,15 @@
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "prop-types": "^15.8.1"
+  },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
+    "@types/prop-types": "^15.7.5",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "gh-pages": "^4.0.0",

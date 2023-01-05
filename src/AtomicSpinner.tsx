@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 
 import ElectronPath from './ElectronPath';
 import Electron from './Electron';
@@ -21,7 +22,7 @@ export type AtomicSpinnerProps = {
   nucleusDistanceFromCenter?: number
 };
 
-const AtomicSpinner = ({
+const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
   atomSize = 200,
   displayElectronPaths = true,
   displayNucleus = true,
@@ -99,5 +100,22 @@ const AtomicSpinner = ({
     </svg>
   );
 };
+
+AtomicSpinner.propTypes = {
+  atomSize: PropTypes.number,
+  displayElectronPaths: PropTypes.bool,
+  displayNucleus: PropTypes.bool,
+  electronColorPalette: PropTypes.arrayOf(PropTypes.string.isRequired),
+  electronPathCount: PropTypes.number,
+  electronPathColor: PropTypes.string,
+  electronPathWidth: PropTypes.number,
+  electronsPerPath: PropTypes.number,
+  electronSize: PropTypes.number,
+  nucleusParticleFillColor: PropTypes.string,
+  nucleusParticleBorderColor: PropTypes.string,
+  nucleusParticleCount: PropTypes.number,
+  nucleusParticleSize: PropTypes.number,
+  nucleusDistanceFromCenter: PropTypes.number
+}
 
 export default React.memo(AtomicSpinner);
