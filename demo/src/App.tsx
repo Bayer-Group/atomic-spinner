@@ -79,7 +79,6 @@ function App() {
           <Switch
             checked={displayElectronPaths}
             onChange={displayElectronPathsChangeHandler}
-            inputProps={{ 'aria-label': 'controlled' }}
           />
         </Grid>
         <Grid xs={12} lg={2}>

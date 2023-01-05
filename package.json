@@ -15,7 +15,7 @@
     "minify": "uglifyjs --compress -o dist/index.min.js -- dist/index.js",
     "publish-npm": "pnpm build && npm publish",
     "build-demo": "pnpm --prefix demo build",
-    "deploy-demo": "gh-pages -d demo/build"
+    "deploy-demo": "pnpm build-demo && gh-pages -d demo/build"
   },
   "keywords": [
     "atomic",
