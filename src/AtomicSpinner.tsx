@@ -83,11 +83,11 @@ const AtomicSpinner = ({
       {electronPaths.map(({ electronCount, rotationAngle, electronOrbitTime }) =>
         Array.from({ length: electronCount })
           .map((_, i) => {
-            const electronIndex = i;
+            const electronKey = i;
 
             return (
               <Electron
-                key={`electron-${electronIndex}`}
+                key={`electron-${electronKey}`}
                 pathDefinitionId={electronDefinitionId}
                 rotationAngle={rotationAngle}
                 orbitTime={electronOrbitTime}
