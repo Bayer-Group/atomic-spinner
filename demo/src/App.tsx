@@ -32,6 +32,14 @@ function App() {
     setElectronsPerPath(Number(value));
   }, []);
 
+  const electronColorDeleteHandler = useCallback((electronColor: string) => () => {
+    setElectronColorPalette(electronColorPalette.filter((color) => color !== electronColor))
+  }, [electronColorPalette]);
+
+  const electronColorAddHandler = useCallback(() => {
+    setElectronColorPalette([...new Set([...electronColorPalette, electronNewColor])]);
+  }, [electronColorPalette, electronNewColor]);
+
   return (
     <Box sx={{ flexGrow: 1, padding: 5 }}>
       <Grid container spacing={2}>
@@ -81,16 +89,12 @@ function App() {
               key={i}
               style={{backgroundColor: electronColor}}
               label={electronColor}
-              onDelete={() => {
-                setElectronColorPalette(electronColorPalette.filter((color) => color !== electronColor))
-              }}
+              onDelete={electronColorDeleteHandler(electronColor)}
             />
           )}
           <HexColorPicker style={{marginTop: '15px'}} color={electronNewColor} onChange={setElectronNewColor} />
           <HexColorInput color={electronNewColor} onChange={setElectronNewColor} />
-          <IconButton aria-label="add" color="primary" onClick={() => {
-            setElectronColorPalette([...new Set([...electronColorPalette, electronNewColor])]);
-          }}>
+          <IconButton aria-label="add" color="primary" onClick={electronColorAddHandler}>
             <AddIcon />
           </IconButton>
         </Grid>

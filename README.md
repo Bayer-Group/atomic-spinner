@@ -17,11 +17,9 @@ https://codenough-llc.github.io/atomic-spinner/
 ```sh
 npm i atomic-spinner
 ```
-
 ```sh
 yarn add atomic-spinner
 ```
-
 ```sh
 pnpm i atomic-spinner
 ```
@@ -31,26 +29,26 @@ pnpm i atomic-spinner
 ```jsx
 import AtomicSpinner from 'atomic-spinner'
 
-function MyComponent() {
-  return (
-    <AtomicSpinner
-      atomSize={200}
-      displayElectronPaths
-      displayNucleus
-      electronColorPalette={[ '#0081C9', '#5BC0F8', '#86E5FF' ]}
-      electronPathCount={3}
-      electronPathColor="#707070"
-      electronPathWidth={0.5}
-      electronsPerPath={2}
-      electronSize={1.5}
-      nucleusParticleFillColor="#707070"
-      nucleusParticleBorderColor="#999"
-      nucleusParticleCount={6}
-      nucleusParticleSize={2.5}
-      nucleusDistanceFromCenter={2.5}
-    />
-  )
-}
+const App = () => <AtomicSpinner />
 
-export default MyComponent
+export default App
 ```
+
+## Options
+
+| prop | type | default |
+| ---- | ---- | ------- |
+| atomSize | number | 200 |
+| displayElectronPaths | bool | false |
+| displayNucleus | bool | false |
+| electronColorPalette | string[] | [ '#0081C9', '#5BC0F8', '#86E5FF' ] |
+| electronPathCount | number | 3 |
+| electronPathColor | string | #707070 |
+| electronPathWidth | number | 0.5 |
+| electronsPerPath | number | 2 |
+| electronSize | number | 1.5 |
+| nucleusParticleFillColor | string | #707070 |
+| nucleusParticleBorderColor | string | #999 |
+| nucleusParticleCount | number | 6 |
+| nucleusParticleSize | number | 2.5 |
+| nucleusDistanceFromCenter | number | 2.5 |
