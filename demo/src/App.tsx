@@ -11,15 +11,25 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import { HexColorPicker, HexColorInput } from 'react-colorful';
 import React, { useCallback, useState } from 'react';
+import SettingsBox from './SettingsBox';
+import DarkModeToggle from './DarkModeToggle';
 
 function App() {
   const [atomSize, setAtomSize] = useState(200);
   const [displayElectronPaths, setDisplayElectronPaths] = useState(true);
   const [displayNucleus, setDisplayNucleus] = useState(true);
+  const [electronPathColor, setElectronPathColor] = useState('#707070');
   const [electronPathCount, setElectronPathCount] = useState(3);
+  const [electronPathWidth, setElectronPathWidth] = useState(0.5);
   const [electronsPerPath, setElectronsPerPath] = useState(2);
+  const [electronSize, setElectronSize] = useState(1.5);
   const [electronNewColor, setElectronNewColor] = useState('#86E5FF');
   const [electronColorPalette, setElectronColorPalette] = useState(['#0081C9', '#5BC0F8', '#86E5FF']);
+  const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState('#707070');
+  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#999');
+  const [nucleusParticleCount, setNucleusParticleCount] = useState(6);
+  const [nucleusParticleSize, setNucleusParticleSize] = useState(2.5);
+  const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(2.5);
 
   const atomSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
     setAtomSize(Number(value));
@@ -37,8 +47,28 @@ function App() {
     setElectronPathCount(Number(value));
   }, []);
 
+  const electronPathWidthChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
+    setElectronPathWidth(Number(value));
+  }, []);
+
   const electronsPerPathChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
     setElectronsPerPath(Number(value));
+  }, []);
+
+  const electronSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
+    setElectronSize(Number(value));
+  }, []);
+
+  const nucleusParticleCountChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
+    setNucleusParticleCount(Number(value));
+  }, []);
+
+  const nucleusParticleSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
+    setNucleusParticleSize(Number(value));
+  }, []);
+
+  const nucleusDistanceFromCenterChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
+    setNucleusDistanceFromCenter(Number(value));
   }, []);
 
   const electronColorDeleteHandler = useCallback((electronColor: string) => () => {
@@ -51,79 +81,192 @@ function App() {
 
   return (
     <Box sx={{ flexGrow: 1, padding: 5 }}>
-      <Grid container spacing={2}>
-        <Grid xs={12} display="flex" justifyContent="center">
-          <AtomicSpinner
-            atomSize={atomSize}
-            displayElectronPaths={displayElectronPaths}
-            displayNucleus={displayNucleus}
-            electronPathCount={electronPathCount}
-            electronsPerPath={electronsPerPath}
-            electronColorPalette={electronColorPalette}
-          />
+      <Grid container spacing={2} justifyContent="center">
+        <Grid container>
+          <DarkModeToggle />
         </Grid>
-        <Grid xs={12} lg={2}>
-          <Typography gutterBottom>Atom Size</Typography>
-          <Slider
-            defaultValue={200}
-            valueLabelDisplay="auto"
-            step={1}
-            min={0}
-            max={1000}
-            onChangeCommitted={atomSizeChangeHandler}
-          />
-        </Grid>
-        <Grid xs={12} lg={2}>
-          <Typography gutterBottom>Display Electron Paths</Typography>
-          <Switch
-            checked={displayElectronPaths}
-            onChange={displayElectronPathsChangeHandler}
-          />
-        </Grid>
-        <Grid xs={12} lg={2}>
-          <Typography gutterBottom>Display Nucleus</Typography>
-          <Switch
-            checked={displayNucleus}
-            onChange={displayNucleusChangeHandler}
-          />
-        </Grid>
-        <Grid xs={12} lg={2}>
-          <Typography gutterBottom>Electron Path Count</Typography>
-          <Slider
-            defaultValue={3}
-            valueLabelDisplay="auto"
-            step={1}
-            min={0}
-            max={100}
-            onChangeCommitted={electronPathCountChangeHandler}
-          />
-        </Grid>
-        <Grid xs={12} lg={2}>
-          <Typography gutterBottom>Electrons Per Path</Typography>
-          <Slider
-            defaultValue={3}
-            valueLabelDisplay="auto"
-            step={1}
-            min={0}
-            max={100}
-            onChangeCommitted={electronsPerPathChangeHandler}
-          />
-        </Grid>
-        <Grid xs={12} lg={2}>
-          <Typography gutterBottom>Electron Color Palette</Typography>
-          {electronColorPalette.map((electronColor, i) =>
-            <Chip
-              key={electronColor}
-              style={{backgroundColor: electronColor}}
-              label={electronColor}
-              onDelete={electronColorDeleteHandler(electronColor)}
+        <Grid container>
+          <Grid xs={12} display="flex" justifyContent="center">
+            <AtomicSpinner
+              atomSize={atomSize}
+              displayElectronPaths={displayElectronPaths}
+              displayNucleus={displayNucleus}
+              electronColorPalette={electronColorPalette}
+              electronPathCount={electronPathCount}
+              electronPathColor={electronPathColor}
+              electronPathWidth={electronPathWidth}
+              electronsPerPath={electronsPerPath}
+              electronSize={electronSize}
+              nucleusParticleFillColor={nucleusParticleFillColor}
+              nucleusParticleBorderColor={nucleusParticleBorderColor}
+              nucleusParticleCount={nucleusParticleCount}
+              nucleusParticleSize={nucleusParticleSize}
+              nucleusDistanceFromCenter={nucleusDistanceFromCenter}
             />
-          )}
-          <HexColorPicker style={{marginTop: '15px'}} color={electronNewColor} onChange={setElectronNewColor} />
-          <HexColorInput color={electronNewColor} onChange={setElectronNewColor} />
-          <IconButton aria-label="add" color="primary" onClick={electronColorAddHandler}>
-            <AddIcon />
-          </IconButton>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Atom Size</Typography>
+              <Slider
+                defaultValue={200}
+                valueLabelDisplay="auto"
+                step={1}
+                min={0}
+                max={1000}
+                onChangeCommitted={atomSizeChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Display Electron Paths</Typography>
+              <Switch
+                checked={displayElectronPaths}
+                onChange={displayElectronPathsChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Display Nucleus</Typography>
+              <Switch
+                checked={displayNucleus}
+                onChange={displayNucleusChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Electron Path Count</Typography>
+              <Slider
+                defaultValue={3}
+                valueLabelDisplay="auto"
+                step={1}
+                min={0}
+                max={100}
+                onChangeCommitted={electronPathCountChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Electron Path Width</Typography>
+              <Slider
+                defaultValue={0.5}
+                valueLabelDisplay="auto"
+                step={0.1}
+                min={0}
+                max={10}
+                onChangeCommitted={electronPathWidthChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Electrons Per Path</Typography>
+              <Slider
+                defaultValue={3}
+                valueLabelDisplay="auto"
+                step={1}
+                min={0}
+                max={100}
+                onChangeCommitted={electronsPerPathChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Electron Size</Typography>
+              <Slider
+                defaultValue={1.5}
+                valueLabelDisplay="auto"
+                step={0.1}
+                min={0}
+                max={10}
+                onChangeCommitted={electronSizeChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Nucleus Particle Count</Typography>
+              <Slider
+                defaultValue={6}
+                valueLabelDisplay="auto"
+                step={1}
+                min={0}
+                max={10}
+                onChangeCommitted={nucleusParticleCountChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Nucleus Particle Size</Typography>
+              <Slider
+                defaultValue={2.5}
+                valueLabelDisplay="auto"
+                step={0.1}
+                min={0}
+                max={10}
+                onChangeCommitted={nucleusParticleSizeChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Nucleus Distance From Center</Typography>
+              <Slider
+                defaultValue={2.5}
+                valueLabelDisplay="auto"
+                step={0.1}
+                min={0}
+                max={10}
+                onChangeCommitted={nucleusDistanceFromCenterChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid xs={12} lg={3}>
+            <SettingsBox>
+              <Typography gutterBottom>Electron Color Palette</Typography>
+              <HexColorPicker style={{margin: '15px auto'}} color={electronNewColor} onChange={setElectronNewColor} />
+              <HexColorInput color={electronNewColor} onChange={setElectronNewColor} />
+              <IconButton aria-label="add" color="primary" onClick={electronColorAddHandler}>
+                <AddIcon />
+              </IconButton>
+              {electronColorPalette.map((electronColor, i) =>
+                <Chip
+                  key={electronColor}
+                  style={{backgroundColor: electronColor, margin: '2px'}}
+                  label={electronColor}
+                  onDelete={electronColorDeleteHandler(electronColor)}
+                />
+              )}
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={3}>
+            <SettingsBox>
+              <Typography gutterBottom>Electron Path Color</Typography>
+              <HexColorPicker style={{margin: '15px auto'}} color={electronPathColor} onChange={setElectronPathColor} />
+              <HexColorInput color={electronPathColor} onChange={setElectronPathColor} />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={3}>
+            <SettingsBox>
+              <Typography gutterBottom>Nucleus Particle Fill Color</Typography>
+              <HexColorPicker style={{margin: '15px auto'}} color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
+              <HexColorInput color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={3}>
+            <SettingsBox>
+              <Typography gutterBottom>Nucleus Particle Border Color</Typography>
+              <HexColorPicker style={{margin: '15px auto'}} color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
+              <HexColorInput color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
+            </SettingsBox>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
