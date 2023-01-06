@@ -3,38 +3,69 @@ import * as React from 'react';
 export type NucleusProps = {
   particleFillColor: string,
   particleBorderColor: string,
+  particleBorderWidth: number,
   particleCount: number,
   particleSize: number,
-  distanceFromCenter: number
+  distanceFromCenter: number,
+  orbitTime: number
 }
 
 const Nucleus = ({
-  particleFillColor, particleBorderColor, particleCount, particleSize, distanceFromCenter
+  particleFillColor, particleBorderColor, particleBorderWidth, particleCount, particleSize, distanceFromCenter, orbitTime
 }: NucleusProps) => {
-  const startingAngle = Math.random() * 2 * Math.PI;
+  const startingAngle = 0;
   const particles: JSX.Element[] = Array.from({ length: particleCount })
     .map((_, i) => {
       const rotationAngle = startingAngle + i * ((2 * Math.PI) / particleCount);
       const offsetX = particleCount > 1 ? distanceFromCenter * Math.cos(rotationAngle) : 0;
       const offsetY = particleCount > 1 ? distanceFromCenter * Math.sin(rotationAngle) : 0;
 
+      const particleDimensions = {
+        cx: 50 + offsetX,
+        cy: 50 + offsetY
+      };
+
+      const effectiveBorderWidth = Math.min(particleBorderWidth, particleSize / 3);
+
       return (
-        <g key={`particle-${rotationAngle}`}>
+        <React.Fragment key={`particle-${rotationAngle}`}>
+          {effectiveBorderWidth > 0 && i === particleCount - 1 && (
+            <mask id={`bottom-particle`}>
+              <rect x="0" y="0" width="100" height="100" fill="white"></rect>
+              <circle
+                {...particleDimensions}
+                r={particleSize + effectiveBorderWidth / 2}
+              />
+            </mask>
+          )}
           <circle
-            cx={50 + offsetX}
-            cy={50 + offsetY}
+            {...particleDimensions}
             r={particleSize}
             fill={particleFillColor}
             stroke={particleBorderColor}
-            strokeWidth={0.3}
+            strokeWidth={effectiveBorderWidth}
+            mask={i < Math.floor(particleCount / 2) ? `url('#bottom-particle')` : undefined}
           />
-        </g>
+        </React.Fragment>
       );
     });
 
   particles.sort(({ key }) => (Number(key) % (particleCount / 3) ? 1 : -1));
 
-  return <>{particles}</>;
+  return (
+    <g>
+      <animateTransform
+        attributeName="transform"
+        begin="0s"
+        dur={`${orbitTime}s`}
+        type="rotate"
+        from="0 50 50"
+        to="360 50 50"
+        repeatCount="indefinite"
+      />
+      {particles}
+    </g>
+  );
 };
 
 export default Nucleus;

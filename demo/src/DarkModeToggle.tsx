@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, Switch, useTheme } from '@mui/material';
+import { styled, Switch } from '@mui/material';
 import { ColorModeContext } from './contexts/MaterialThemeContextProvider';
 
 const ColorModeToggle = styled(Switch)(({ theme }) => ({

@@ -15,11 +15,14 @@ export type AtomicSpinnerProps = {
   electronPathWidth?: number,
   electronsPerPath?: number,
   electronSize?: number,
+  electronSpeed?: number,
   nucleusParticleFillColor?: string,
   nucleusParticleBorderColor?: string,
+  nucleusParticleBorderWidth?: number,
   nucleusParticleCount?: number,
   nucleusParticleSize?: number,
-  nucleusDistanceFromCenter?: number
+  nucleusDistanceFromCenter?: number,
+  nucleusSpeed?: number
 };
 
 const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
@@ -32,17 +35,20 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
   electronPathWidth = 0.5,
   electronsPerPath = 2,
   electronSize = 1.5,
+  electronSpeed = 0.5,
   nucleusParticleFillColor = '#707070',
   nucleusParticleBorderColor = '#999',
+  nucleusParticleBorderWidth = 0.3,
   nucleusParticleCount = 6,
   nucleusParticleSize = 2.5,
-  nucleusDistanceFromCenter = 2.5
+  nucleusDistanceFromCenter = 2.5,
+  nucleusSpeed = 0.5
 }: AtomicSpinnerProps) => {
   const electronPaths = Array.from({ length: electronPathCount })
     .map((_, i) => ({
       rotationAngle: 0 + i * (180 / electronPathCount),
       electronCount: electronsPerPath,
-      electronOrbitTime: 2 + Math.random() * 1
+      electronOrbitTime: 1 / electronSpeed + Math.random() * (0.2 / electronSpeed)
     }));
 
   const electronPathDefinitionId = 'electronPath';
@@ -69,6 +75,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
             distanceFromCenter={nucleusDistanceFromCenter}
             particleFillColor={nucleusParticleFillColor}
             particleBorderColor={nucleusParticleBorderColor}
+            particleBorderWidth={nucleusParticleBorderWidth}
+            orbitTime={10 / nucleusSpeed}
           />
         )}
       {displayElectronPaths
@@ -111,11 +119,14 @@ AtomicSpinner.propTypes = {
   electronPathWidth: PropTypes.number,
   electronsPerPath: PropTypes.number,
   electronSize: PropTypes.number,
+  electronSpeed: PropTypes.number,
   nucleusParticleFillColor: PropTypes.string,
   nucleusParticleBorderColor: PropTypes.string,
   nucleusParticleCount: PropTypes.number,
   nucleusParticleSize: PropTypes.number,
-  nucleusDistanceFromCenter: PropTypes.number
+  nucleusDistanceFromCenter: PropTypes.number,
+  nucleusParticleBorderWidth: PropTypes.number,
+  nucleusSpeed: PropTypes.number
 }
 
 export default React.memo(AtomicSpinner);

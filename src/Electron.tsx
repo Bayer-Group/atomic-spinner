@@ -9,22 +9,22 @@ export type ElectronProps = {
   colorPalette: string[]
 };
 
+let unusedColors: string[] = [];
+
 const Electron = ({
   pathDefinitionId, rotationAngle, orbitTime, spacetimeOffset, size, colorPalette
 }: ElectronProps) => {
-  let unusedColors: string[] = [];
-
-  const getRandomElectronColor = () => {
+  const getNextElectronColor = () => {
     if (!unusedColors.length) {
       unusedColors = [...colorPalette];
     }
 
-    return unusedColors.splice(Math.floor(Math.random() * (unusedColors.length)), 1)[0];
+    return unusedColors.pop();
   };
 
   return (
     <g transform={`rotate(${rotationAngle} 50 50)`}>
-      <circle cx="50" cy="15" r={size} fill={getRandomElectronColor()}>
+      <circle cx="50" cy="15" r={size} fill={getNextElectronColor()}>
         <animateMotion
           dur={`${orbitTime}s`}
           repeatCount="indefinite"
