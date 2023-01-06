@@ -15,8 +15,8 @@ const Nucleus = ({
   const particles: JSX.Element[] = Array.from({ length: particleCount })
     .map((_, i) => {
       const rotationAngle = startingAngle + i * ((2 * Math.PI) / particleCount);
-      const offsetX = distanceFromCenter * Math.cos(rotationAngle);
-      const offsetY = distanceFromCenter * Math.sin(rotationAngle);
+      const offsetX = particleCount > 1 ? distanceFromCenter * Math.cos(rotationAngle) : 0;
+      const offsetY = particleCount > 1 ? distanceFromCenter * Math.sin(rotationAngle) : 0;
 
       return (
         <g key={`particle-${rotationAngle}`}>
