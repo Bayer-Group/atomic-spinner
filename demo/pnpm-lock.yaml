@@ -13,7 +13,7 @@ specifiers:
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.10
   '@types/react-helmet': ^6.1.6
-  atomic-spinner: ^1.0.15
+  atomic-spinner: ^1.0.16
   prop-types: ^15.8.1
   react: ^18.2.0
   react-colorful: ^5.6.1
@@ -36,7 +36,7 @@ dependencies:
   '@types/react': 18.0.26
   '@types/react-dom': 18.0.10
   '@types/react-helmet': 6.1.6
-  atomic-spinner: 1.0.15_biqbaboplfbrettd7655fr4n2y
+  atomic-spinner: 1.0.16_biqbaboplfbrettd7655fr4n2y
   prop-types: 15.8.1
   react: 18.2.0
   react-colorful: 5.6.1_biqbaboplfbrettd7655fr4n2y
@@ -3422,8 +3422,8 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: false
 
-  /atomic-spinner/1.0.15_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-qMvVJPwrDldP5yTvQODzifhxGdJNr5OsC7mr4TyjStpnRsKL3tCCXeY/ZmlB08AOPqQYH/WB8sArVYNF02JK+g==}
+  /atomic-spinner/1.0.16_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-rVjK+73aBXcInh76O80eqYU2tT6zy5jPT5vgdhRpsJi1FX88G8HZNVvPw8AbL5uw1Zskk/l51cio1gl9VOYTZg==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0

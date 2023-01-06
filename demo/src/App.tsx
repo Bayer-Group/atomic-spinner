@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { HexColorPicker, HexColorInput } from 'react-colorful';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import SettingsBox from './SettingsBox';
 import DarkModeToggle from './DarkModeToggle';
 
@@ -94,6 +94,31 @@ function App() {
     setElectronColorPalette([...new Set([...electronColorPalette, electronNewColor])]);
   }, [electronColorPalette, electronNewColor]);
 
+  const [showAtomicSpinner, setShowAtomicSpinner] = useState(true);
+
+  useEffect(() => {
+    setShowAtomicSpinner(false);
+    setTimeout(() => setShowAtomicSpinner(true), 1);
+  }, [
+    atomSize,
+    displayElectronPaths,
+    displayNucleus,
+    electronColorPalette,
+    electronPathCount,
+    electronPathColor,
+    electronPathWidth,
+    electronsPerPath,
+    electronSize,
+    electronSpeed,
+    nucleusParticleFillColor,
+    nucleusParticleBorderColor,
+    nucleusParticleBorderWidth,
+    nucleusParticleCount,
+    nucleusParticleSize,
+    nucleusDistanceFromCenter,
+    nucleusSpeed
+  ]);
+
   return (
     <Box sx={{ flexGrow: 1, padding: 5 }}>
       <Grid container spacing={2} justifyContent="center">
@@ -101,26 +126,28 @@ function App() {
           <DarkModeToggle />
         </Grid>
         <Grid container>
-          <Grid xs={12} display="flex" justifyContent="center">
-            <AtomicSpinner
-              atomSize={atomSize}
-              displayElectronPaths={displayElectronPaths}
-              displayNucleus={displayNucleus}
-              electronColorPalette={electronColorPalette}
-              electronPathCount={electronPathCount}
-              electronPathColor={electronPathColor}
-              electronPathWidth={electronPathWidth}
-              electronsPerPath={electronsPerPath}
-              electronSize={electronSize}
-              electronSpeed={electronSpeed}
-              nucleusParticleFillColor={nucleusParticleFillColor}
-              nucleusParticleBorderColor={nucleusParticleBorderColor}
-              nucleusParticleBorderWidth={nucleusParticleBorderWidth}
-              nucleusParticleCount={nucleusParticleCount}
-              nucleusParticleSize={nucleusParticleSize}
-              nucleusDistanceFromCenter={nucleusDistanceFromCenter}
-              nucleusSpeed={nucleusSpeed}
-            />
+          <Grid xs={12} display="flex" sx={{minHeight: `${atomSize}px`, padding: 0}} justifyContent="center">
+            {showAtomicSpinner && (
+              <AtomicSpinner
+                atomSize={atomSize}
+                displayElectronPaths={displayElectronPaths}
+                displayNucleus={displayNucleus}
+                electronColorPalette={electronColorPalette}
+                electronPathCount={electronPathCount}
+                electronPathColor={electronPathColor}
+                electronPathWidth={electronPathWidth}
+                electronsPerPath={electronsPerPath}
+                electronSize={electronSize}
+                electronSpeed={electronSpeed}
+                nucleusParticleFillColor={nucleusParticleFillColor}
+                nucleusParticleBorderColor={nucleusParticleBorderColor}
+                nucleusParticleBorderWidth={nucleusParticleBorderWidth}
+                nucleusParticleCount={nucleusParticleCount}
+                nucleusParticleSize={nucleusParticleSize}
+                nucleusDistanceFromCenter={nucleusDistanceFromCenter}
+                nucleusSpeed={nucleusSpeed}
+              />
+            )}
           </Grid>
           <Grid xs={12} lg={2}>
             <SettingsBox>
