@@ -29,7 +29,7 @@ const Nucleus = ({
 
       return (
         <React.Fragment key={`particle-${rotationAngle}`}>
-          {effectiveBorderWidth > 0 && i === particleCount - 1 && (
+          {effectiveBorderWidth > 0 && i === 0 && (
             <mask id={`bottom-particle`}>
               <rect x="0" y="0" width="100" height="100" fill="white"></rect>
               <circle
@@ -44,13 +44,11 @@ const Nucleus = ({
             fill={particleFillColor}
             stroke={particleBorderColor}
             strokeWidth={effectiveBorderWidth}
-            mask={i < Math.floor(particleCount / 2) ? `url('#bottom-particle')` : undefined}
+            mask={i > Math.floor(particleCount / 2) ? `url('#bottom-particle')` : undefined}
           />
         </React.Fragment>
       );
     });
-
-  particles.sort(({ key }) => (Number(key) % (particleCount / 3) ? 1 : -1));
 
   return (
     <g>
