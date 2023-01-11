@@ -29,7 +29,8 @@ function App() {
   const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState('#707070');
   const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#999');
   const [nucleusParticleBorderWidth, setNucleusParticleBorderWidth] = useState(0.3);
-  const [nucleusParticleCount, setNucleusParticleCount] = useState(6);
+  const [nucleusLayerCount, setNucleusLayerCount] = useState(2);
+  const [nucleusParticlesPerLayer, setNucleusParticlesPerLayer] = useState(3);
   const [nucleusParticleSize, setNucleusParticleSize] = useState(2.5);
   const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(2.5);
   const [nucleusSpeed, setNucleusSpeed] = useState(0.5);
@@ -66,12 +67,16 @@ function App() {
     setElectronSpeed(Number(value));
   }, []);
 
-  const nucleusParticleBorderWidthChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setNucleusParticleBorderWidth(Number(value));
+  const nucleusLayerCountChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
+    setNucleusLayerCount(Number(value));
   }, []);
 
-  const nucleusParticleCountChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setNucleusParticleCount(Number(value));
+  const nucleusParticlesPerLayerChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
+    setNucleusParticlesPerLayer(Number(value));
+  }, []);
+
+  const nucleusParticleBorderWidthChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
+    setNucleusParticleBorderWidth(Number(value));
   }, []);
 
   const nucleusParticleSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
@@ -110,10 +115,11 @@ function App() {
     electronsPerPath,
     electronSize,
     electronSpeed,
+    nucleusLayerCount,
+    nucleusParticlesPerLayer,
     nucleusParticleFillColor,
     nucleusParticleBorderColor,
     nucleusParticleBorderWidth,
-    nucleusParticleCount,
     nucleusParticleSize,
     nucleusDistanceFromCenter,
     nucleusSpeed
@@ -139,10 +145,11 @@ function App() {
                 electronsPerPath={electronsPerPath}
                 electronSize={electronSize}
                 electronSpeed={electronSpeed}
+                nucleusLayerCount={nucleusLayerCount}
+                nucleusParticlesPerLayer={nucleusParticlesPerLayer}
                 nucleusParticleFillColor={nucleusParticleFillColor}
                 nucleusParticleBorderColor={nucleusParticleBorderColor}
                 nucleusParticleBorderWidth={nucleusParticleBorderWidth}
-                nucleusParticleCount={nucleusParticleCount}
                 nucleusParticleSize={nucleusParticleSize}
                 nucleusDistanceFromCenter={nucleusDistanceFromCenter}
                 nucleusSpeed={nucleusSpeed}
@@ -260,14 +267,27 @@ function App() {
           </Grid>
           <Grid xs={12} lg={2}>
             <SettingsBox>
-              <Typography gutterBottom>Nucleus Particle Count</Typography>
+              <Typography gutterBottom>Nucleus Layer Count</Typography>
               <Slider
-                defaultValue={6}
+                defaultValue={2}
                 valueLabelDisplay="auto"
                 step={1}
                 min={0}
                 max={10}
-                onChangeCommitted={nucleusParticleCountChangeHandler}
+                onChangeCommitted={nucleusLayerCountChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Nucleus Particles Per Layer</Typography>
+              <Slider
+                defaultValue={3}
+                valueLabelDisplay="auto"
+                step={1}
+                min={0}
+                max={10}
+                onChangeCommitted={nucleusParticlesPerLayerChangeHandler}
               />
             </SettingsBox>
           </Grid>

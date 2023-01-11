@@ -1,24 +1,29 @@
 import * as React from 'react';
 
 export type NucleusProps = {
+  layerCount: number,
+  particlesPerLayer: number,
   particleFillColor: string,
   particleBorderColor: string,
   particleBorderWidth: number,
-  particleCount: number,
   particleSize: number,
   distanceFromCenter: number,
   orbitTime: number
 }
 
-const Nucleus = ({
-  particleFillColor, particleBorderColor, particleBorderWidth, particleCount, particleSize, distanceFromCenter, orbitTime
-}: NucleusProps) => {
-  const startingAngle = 0;
-  const particles: JSX.Element[] = Array.from({ length: particleCount })
+type NucleusLayerProps = NucleusProps & {
+  particlesPerLayer: number,
+  startingAngle: number
+}
+
+const NucleusLayer = ({
+  particleFillColor, particleBorderColor, particleBorderWidth, particlesPerLayer, particleSize, distanceFromCenter, orbitTime, startingAngle
+}: NucleusLayerProps) => {
+  const particles: JSX.Element[] = Array.from({ length: particlesPerLayer })
     .map((_, i) => {
-      const rotationAngle = startingAngle + i * ((2 * Math.PI) / particleCount);
-      const offsetX = particleCount > 1 ? distanceFromCenter * Math.cos(rotationAngle) : 0;
-      const offsetY = particleCount > 1 ? distanceFromCenter * Math.sin(rotationAngle) : 0;
+      const rotationAngle = startingAngle + i * ((2 * Math.PI) / particlesPerLayer);
+      const offsetX = particlesPerLayer > 1 ? distanceFromCenter * Math.cos(rotationAngle) : 0;
+      const offsetY = particlesPerLayer > 1 ? distanceFromCenter * Math.sin(rotationAngle) : 0;
 
       const particleDimensions = {
         cx: 50 + offsetX,
@@ -30,7 +35,7 @@ const Nucleus = ({
       return (
         <React.Fragment key={`particle-${rotationAngle}`}>
           {effectiveBorderWidth > 0 && i === 0 && (
-            <mask id={`bottom-particle`}>
+            <mask id={`layer-${startingAngle}-bottom-particle`}>
               <rect x="0" y="0" width="100" height="100" fill="white"></rect>
               <circle
                 {...particleDimensions}
@@ -44,7 +49,7 @@ const Nucleus = ({
             fill={particleFillColor}
             stroke={particleBorderColor}
             strokeWidth={effectiveBorderWidth}
-            mask={i > Math.floor(particleCount / 2) ? `url('#bottom-particle')` : undefined}
+            mask={i > Math.floor(particlesPerLayer / 2) ? `url('#layer-${startingAngle}-bottom-particle')` : undefined}
           />
         </React.Fragment>
       );
@@ -65,5 +70,25 @@ const Nucleus = ({
     </g>
   );
 };
+
+const Nucleus = (props: NucleusProps) => {
+  const angleIncrement = props.particlesPerLayer % 2 === 0
+    ? Math.PI / 2 / Math.max(1, (props.layerCount - 1))
+    : Math.PI / Math.max(1, (props.layerCount - 1))
+
+  return (
+    <>
+      {Array.from({ length: props.layerCount }).map((_, index) => {
+        const startingAngle = index * angleIncrement;
+        return <NucleusLayer
+          key={`nucleus-layer-${startingAngle}`}
+          {...props}
+          particlesPerLayer={props.particlesPerLayer}
+          startingAngle={startingAngle} />;
+      }
+      )}
+    </>
+  );
+}
 
 export default Nucleus;

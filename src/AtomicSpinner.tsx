@@ -16,10 +16,11 @@ export type AtomicSpinnerProps = {
   electronsPerPath?: number,
   electronSize?: number,
   electronSpeed?: number,
+  nucleusLayerCount?: number,
+  nucleusParticlesPerLayer?: number,
   nucleusParticleFillColor?: string,
   nucleusParticleBorderColor?: string,
   nucleusParticleBorderWidth?: number,
-  nucleusParticleCount?: number,
   nucleusParticleSize?: number,
   nucleusDistanceFromCenter?: number,
   nucleusSpeed?: number
@@ -36,10 +37,11 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
   electronsPerPath = 2,
   electronSize = 1.5,
   electronSpeed = 0.5,
+  nucleusLayerCount = 2,
+  nucleusParticlesPerLayer = 3,
   nucleusParticleFillColor = '#707070',
   nucleusParticleBorderColor = '#999',
   nucleusParticleBorderWidth = 0.3,
-  nucleusParticleCount = 6,
   nucleusParticleSize = 2.5,
   nucleusDistanceFromCenter = 2.5,
   nucleusSpeed = 0.5
@@ -70,7 +72,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
       {displayNucleus
         && (
           <Nucleus
-            particleCount={nucleusParticleCount}
+            layerCount={nucleusLayerCount}
+            particlesPerLayer={nucleusParticlesPerLayer}
             particleSize={nucleusParticleSize}
             distanceFromCenter={nucleusDistanceFromCenter}
             particleFillColor={nucleusParticleFillColor}
@@ -89,26 +92,25 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
             rotationAngle={rotationAngle}
           />
         ))}
-      {electronPaths.map(({ electronCount, rotationAngle, electronOrbitTime }) =>
-        {
-          const randomSpacetimeShift = (-1 + Math.random() * -1) * electronOrbitTime;
+      {electronPaths.map(({ electronCount, rotationAngle, electronOrbitTime }) => {
+        const randomSpacetimeShift = (-1 + Math.random() * -1) * electronOrbitTime;
 
-          return Array.from({ length: electronCount })
-            .map((_, i) => {
-              const electronKey = i;
+        return Array.from({ length: electronCount })
+          .map((_, i) => {
+            const electronKey = i;
 
-              return (
-                <Electron
-                  key={`electron-${electronKey}`}
-                  pathDefinitionId={electronDefinitionId}
-                  rotationAngle={rotationAngle}
-                  orbitTime={electronOrbitTime}
-                  size={electronSize}
-                  spacetimeOffset={randomSpacetimeShift + i * (electronOrbitTime / (electronCount))}
-                  colorPalette={electronColorPalette} />
-              );
-            });
-        })}
+            return (
+              <Electron
+                key={`electron-${electronKey}`}
+                pathDefinitionId={electronDefinitionId}
+                rotationAngle={rotationAngle}
+                orbitTime={electronOrbitTime}
+                size={electronSize}
+                spacetimeOffset={randomSpacetimeShift + i * (electronOrbitTime / (electronCount))}
+                colorPalette={electronColorPalette} />
+            );
+          });
+      })}
     </svg>
   );
 };
@@ -124,9 +126,10 @@ AtomicSpinner.propTypes = {
   electronsPerPath: PropTypes.number,
   electronSize: PropTypes.number,
   electronSpeed: PropTypes.number,
+  nucleusLayerCount: PropTypes.number,
+  nucleusParticlesPerLayer: PropTypes.number,
   nucleusParticleFillColor: PropTypes.string,
   nucleusParticleBorderColor: PropTypes.string,
-  nucleusParticleCount: PropTypes.number,
   nucleusParticleSize: PropTypes.number,
   nucleusDistanceFromCenter: PropTypes.number,
   nucleusParticleBorderWidth: PropTypes.number,
