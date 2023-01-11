@@ -23,7 +23,7 @@ const Electron = ({
   };
 
   return (
-    <g transform={`rotate(${rotationAngle} 50 50)`}>
+    <g data-testid="electron" transform={`rotate(${rotationAngle} 50 50)`}>
       <circle cx="50" cy="15" r={size} fill={getNextElectronColor()}>
         <animateMotion
           dur={`${orbitTime}s`}

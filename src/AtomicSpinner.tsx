@@ -136,4 +136,4 @@ AtomicSpinner.propTypes = {
   nucleusSpeed: PropTypes.number
 }
 
-export default React.memo(AtomicSpinner);
+export default AtomicSpinner;
