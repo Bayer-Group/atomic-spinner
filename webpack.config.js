@@ -1,4 +1,5 @@
 const path = require('path');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
   entry: './src/index.tsx',
@@ -23,4 +24,5 @@ module.exports = {
       umdNamedDefine: true
     }
   },
+  plugins: [new CompressionPlugin()]
 };

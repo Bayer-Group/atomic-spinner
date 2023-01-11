@@ -1,6 +1,6 @@
 {
   "name": "atomic-spinner",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Customizable React loading spinner that looks like an atom",
   "author": "David Lounsbrough",
   "license": "MIT",
@@ -46,6 +46,7 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "@types/webpack": "^5.28.0",
+    "compression-webpack-plugin": "^10.0.0",
     "cypress": "^12.3.0",
     "gh-pages": "^4.0.0",
     "react": "^18.2.0",
