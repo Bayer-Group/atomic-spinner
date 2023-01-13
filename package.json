@@ -1,6 +1,6 @@
 {
   "name": "atomic-spinner",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Customizable React loading spinner that looks like an atom",
   "author": "David Lounsbrough",
   "license": "MIT",

@@ -1,6 +1,3 @@
-# Created by https://www.toptal.com/developers/gitignore/api/node,react
-# Edit at https://www.toptal.com/developers/gitignore?templates=node,react
-
 ### Node ###
 # Logs
 logs
@@ -154,4 +151,6 @@ psd
 thumb
 sketch
 
-# End of https://www.toptal.com/developers/gitignore/api/node,react
+# cypress
+cypress/videos
+cypress/screenshots

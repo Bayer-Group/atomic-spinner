@@ -27,13 +27,13 @@ function App() {
   const [electronNewColor, setElectronNewColor] = useState('#86E5FF');
   const [electronColorPalette, setElectronColorPalette] = useState(['#0081C9', '#5BC0F8', '#86E5FF']);
   const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState('#707070');
-  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#999');
+  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#999999');
   const [nucleusParticleBorderWidth, setNucleusParticleBorderWidth] = useState(0.3);
   const [nucleusLayerCount, setNucleusLayerCount] = useState(2);
   const [nucleusParticlesPerLayer, setNucleusParticlesPerLayer] = useState(3);
   const [nucleusParticleSize, setNucleusParticleSize] = useState(2.5);
   const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(2.5);
-  const [nucleusSpeed, setNucleusSpeed] = useState(0.5);
+  const [nucleusSpeed, setNucleusSpeed] = useState(2);
 
   const atomSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
     setAtomSize(Number(value));
@@ -321,7 +321,7 @@ function App() {
             <SettingsBox>
               <Typography gutterBottom>Nucleus Speed</Typography>
               <Slider
-                defaultValue={0.5}
+                defaultValue={2}
                 valueLabelDisplay="auto"
                 step={0.1}
                 min={0}
