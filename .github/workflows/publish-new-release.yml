@@ -56,4 +56,4 @@ jobs:
       - name: Commit latest package version
         run: |
           git diff --exit-code || git commit -am "Updating package version in demo"
-          git push
+          git push origin HEAD:main
