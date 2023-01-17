@@ -40,6 +40,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i -g pnpm
+      - run: pnpm i
       - run: pnpm --prefix demo i
       - run: pnpm --prefix demo up atomic-spinner --latest
       - run: git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
