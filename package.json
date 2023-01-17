@@ -17,7 +17,7 @@
     "start-demo": "pnpm --prefix demo start",
     "build-demo": "pnpm --prefix demo build",
     "deploy-demo": "pnpm build-demo && gh-pages -d demo/build",
-    "lint": "eslint --ext .ts,.tsx .",
+    "lint": "eslint --ext .ts,.tsx . && pnpm --prefix demo lint",
     "test": "pnpm cypress run --component",
     "test-interactive": "pnpm cypress open"
   },

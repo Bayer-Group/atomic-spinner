@@ -8,7 +8,9 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/
+        exclude: [
+          /node_modules/
+        ]
       }
     ]
   },
@@ -24,5 +26,7 @@ module.exports = {
       umdNamedDefine: true
     }
   },
-  plugins: [new CompressionPlugin()]
+  plugins: [
+    new CompressionPlugin()
+  ]
 }
