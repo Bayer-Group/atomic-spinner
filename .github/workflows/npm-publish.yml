@@ -7,12 +7,16 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
       - run: sudo apt-get install jq
       - run: jq ".version=\"${GITHUB_REF#refs/*/}\"" package.json > package-new.json && mv package-new.json package.json
       - run: cat package.json
