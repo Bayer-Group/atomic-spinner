@@ -18,6 +18,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
+    - run: npm install -g pnpm
     - run: pnpn i
     - run: pnpm test
