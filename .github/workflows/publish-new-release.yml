@@ -42,7 +42,8 @@ jobs:
       - run: npm i -g pnpm
       - run: pnpm i
       - run: pnpm --prefix demo i
-      - run: pnpm --prefix demo up atomic-spinner --latest
+      - run: pnpm --prefix demo un atomic-spinner
+      - run: pnpm --prefix demo i atomic-spinner@latest
       - name: Set Github identity
         run: |
           git config user.email "support+actions@github.com"
@@ -53,7 +54,3 @@ jobs:
           pnpm deploy-demo -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Commit latest package version
-        run: |
-          git diff --exit-code || git commit -am "Updating package version in demo"
-          git push origin HEAD:main
