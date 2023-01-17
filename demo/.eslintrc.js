@@ -1,15 +1,9 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
     es2021: true
   },
-  ignorePatterns: [
-    'dist/',
-    'demo/',
-    'cypress/',
-    'cypress.config.ts',
-    '**/*.cy.tsx'
-  ],
   extends: [
     'plugin:react/recommended',
     'standard-with-typescript'
