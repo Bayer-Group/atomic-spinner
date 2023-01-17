@@ -1,6 +1,6 @@
 {
   "name": "atomic-spinner",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "Customizable React loading spinner that looks like an atom",
   "author": "David Lounsbrough",
   "license": "MIT",
@@ -16,7 +16,8 @@
     "publish-npm": "pnpm clean && pnpm build && npm publish",
     "build-demo": "pnpm --prefix demo build",
     "deploy-demo": "pnpm build-demo && gh-pages -d demo/build",
-    "test": "pnpm cypress open"
+    "test": "pnpm cypress run --component",
+    "test:interactive": "pnpm cypress open"
   },
   "keywords": [
     "atomic",
