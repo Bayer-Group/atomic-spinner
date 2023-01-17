@@ -44,7 +44,7 @@ jobs:
       - run: pnpm --prefix demo i
       - run: pnpm --prefix demo up atomic-spinner --latest
       - run: git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-      - run: pnpm deploy-demo
+      - run: pnpm deploy-demo -- -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: "Codenough-LLC/atomic-spinner"
