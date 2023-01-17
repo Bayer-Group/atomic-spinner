@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: apt-get install jq
+      - run: sudo apt-get install jq
       - run: jq ".version=\"${GITHUB_REF#refs/*/}\"" package.json > package-new.json && mv package-new.json package.json
       - run: cat package.json
       - run: pnpm i
