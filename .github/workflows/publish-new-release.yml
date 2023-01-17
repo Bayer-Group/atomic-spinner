@@ -1,0 +1,50 @@
+name: Publish New Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: sudo apt-get install jq
+      - run: jq ".version=\"${GITHUB_REF#refs/*/}\"" package.json > package-new.json && mv package-new.json package.json
+      - run: cat package.json
+      - run: npm i -g pnpm
+      - run: pnpm i
+      - run: pnpm test
+      - run: pnpm publish-npm
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+
+  deploy-demo:
+    needs: publish-npm
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm i -g pnpm
+      - run: pnpm i
+      - run: pnpm up atomic-spinner
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: "Codenough-LLC/atomic-spinner"
