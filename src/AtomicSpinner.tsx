@@ -1,30 +1,30 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react'
+import PropTypes from 'prop-types'
 
-import ElectronPath from './ElectronPath';
-import Electron from './Electron';
-import Nucleus from './Nucleus';
+import ElectronPath from './ElectronPath'
+import Electron from './Electron'
+import Nucleus from './Nucleus'
 
-export type AtomicSpinnerProps = {
-  atomSize?: number,
-  displayElectronPaths?: boolean,
-  displayNucleus?: boolean,
-  electronColorPalette?: string[],
-  electronPathCount?: number,
-  electronPathColor?: string,
-  electronPathWidth?: number,
-  electronsPerPath?: number,
-  electronSize?: number,
-  electronSpeed?: number,
-  nucleusLayerCount?: number,
-  nucleusParticlesPerLayer?: number,
-  nucleusParticleFillColor?: string,
-  nucleusParticleBorderColor?: string,
-  nucleusParticleBorderWidth?: number,
-  nucleusParticleSize?: number,
-  nucleusDistanceFromCenter?: number,
+export interface AtomicSpinnerProps {
+  atomSize?: number
+  displayElectronPaths?: boolean
+  displayNucleus?: boolean
+  electronColorPalette?: string[]
+  electronPathCount?: number
+  electronPathColor?: string
+  electronPathWidth?: number
+  electronsPerPath?: number
+  electronSize?: number
+  electronSpeed?: number
+  nucleusLayerCount?: number
+  nucleusParticlesPerLayer?: number
+  nucleusParticleFillColor?: string
+  nucleusParticleBorderColor?: string
+  nucleusParticleBorderWidth?: number
+  nucleusParticleSize?: number
+  nucleusDistanceFromCenter?: number
   nucleusSpeed?: number
-};
+}
 
 const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
   atomSize = 200,
@@ -51,10 +51,10 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
       rotationAngle: 0 + i * (180 / electronPathCount),
       electronCount: electronsPerPath,
       electronOrbitTime: 1 / electronSpeed + Math.random() * (0.2 / electronSpeed)
-    }));
+    }))
 
-  const electronPathDefinitionId = 'electronPath';
-  const electronDefinitionId = 'electron';
+  const electronPathDefinitionId = 'electronPath'
+  const electronDefinitionId = 'electron'
 
   return (
     <svg
@@ -69,8 +69,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
         <path id={electronPathDefinitionId} d="M50 15A15 35 0 0 1 50 85A15 35 0 0 1 50 15" fill="none" />
         <path id={electronDefinitionId} d="M0 0A15 35 0 0 1 0 70A15 35 0 0 1 0 0" fill="none" />
       </defs>
-      {displayNucleus
-        && (
+      {displayNucleus &&
+        (
           <Nucleus
             layerCount={nucleusLayerCount}
             particlesPerLayer={nucleusParticlesPerLayer}
@@ -82,8 +82,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
             orbitTime={10 / nucleusSpeed}
           />
         )}
-      {displayElectronPaths
-        && electronPaths.map(({ rotationAngle }) => (
+      {displayElectronPaths &&
+        electronPaths.map(({ rotationAngle }) => (
           <ElectronPath
             key={`electron-path-${rotationAngle}`}
             pathDefinitionId={electronPathDefinitionId}
@@ -93,11 +93,11 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
           />
         ))}
       {electronPaths.map(({ electronCount, rotationAngle, electronOrbitTime }) => {
-        const randomSpacetimeShift = (-1 + Math.random() * -1) * electronOrbitTime;
+        const randomSpacetimeShift = (-1 + Math.random() * -1) * electronOrbitTime
 
         return Array.from({ length: electronCount })
           .map((_, i) => {
-            const electronKey = i;
+            const electronKey = i
 
             return (
               <Electron
@@ -108,12 +108,12 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
                 size={electronSize}
                 spacetimeOffset={randomSpacetimeShift + i * (electronOrbitTime / (electronCount))}
                 colorPalette={electronColorPalette} />
-            );
-          });
+            )
+          })
       })}
     </svg>
-  );
-};
+  )
+}
 
 AtomicSpinner.propTypes = {
   atomSize: PropTypes.number,
@@ -136,4 +136,4 @@ AtomicSpinner.propTypes = {
   nucleusSpeed: PropTypes.number
 }
 
-export default AtomicSpinner;
+export default AtomicSpinner

@@ -19,11 +19,7 @@
       "node"
     ]
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
-    "**/*.cy.tsx",
     "node_modules",
     "dist"
   ]

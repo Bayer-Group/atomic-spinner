@@ -1,26 +1,26 @@
-import * as React from 'react';
+import * as React from 'react'
 
-export type ElectronProps = {
-  pathDefinitionId: string,
-  rotationAngle: number,
-  orbitTime: number,
-  spacetimeOffset: number,
-  size: number,
+export interface ElectronProps {
+  pathDefinitionId: string
+  rotationAngle: number
+  orbitTime: number
+  spacetimeOffset: number
+  size: number
   colorPalette: string[]
-};
+}
 
-let unusedColors: string[] = [];
+let unusedColors: string[] = []
 
 const Electron = ({
   pathDefinitionId, rotationAngle, orbitTime, spacetimeOffset, size, colorPalette
-}: ElectronProps) => {
-  const getNextElectronColor = () => {
-    if (!unusedColors.length) {
-      unusedColors = [...colorPalette];
+}: ElectronProps): JSX.Element => {
+  const getNextElectronColor = (): string => {
+    if (unusedColors.length === 0) {
+      unusedColors = [...colorPalette]
     }
 
-    return unusedColors.pop();
-  };
+    return unusedColors.pop() ?? '#000000'
+  }
 
   return (
     <g data-testid="electron" transform={`rotate(${rotationAngle} 50 50)`}>
@@ -34,7 +34,7 @@ const Electron = ({
         </animateMotion>
       </circle>
     </g>
-  );
-};
+  )
+}
 
-export default Electron;
+export default Electron

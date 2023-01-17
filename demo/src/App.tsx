@@ -1,4 +1,4 @@
-import AtomicSpinner from 'atomic-spinner';
+import AtomicSpinner from 'atomic-spinner'
 import {
   Box,
   Chip,
@@ -7,103 +7,103 @@ import {
   Typography,
   Switch,
   Unstable_Grid2 as Grid
-} from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import { HexColorPicker, HexColorInput } from 'react-colorful';
-import React, { useCallback, useEffect, useState } from 'react';
-import SettingsBox from './SettingsBox';
-import DarkModeToggle from './DarkModeToggle';
+} from '@mui/material'
+import AddIcon from '@mui/icons-material/Add'
+import { HexColorPicker, HexColorInput } from 'react-colorful'
+import React, { useCallback, useEffect, useState } from 'react'
+import SettingsBox from './SettingsBox'
+import DarkModeToggle from './DarkModeToggle'
 
-function App() {
-  const [atomSize, setAtomSize] = useState(200);
-  const [displayElectronPaths, setDisplayElectronPaths] = useState(true);
-  const [displayNucleus, setDisplayNucleus] = useState(true);
-  const [electronPathColor, setElectronPathColor] = useState('#707070');
-  const [electronPathCount, setElectronPathCount] = useState(3);
-  const [electronPathWidth, setElectronPathWidth] = useState(0.5);
-  const [electronsPerPath, setElectronsPerPath] = useState(2);
-  const [electronSize, setElectronSize] = useState(1.5);
-  const [electronSpeed, setElectronSpeed] = useState(0.5);
-  const [electronNewColor, setElectronNewColor] = useState('#86E5FF');
-  const [electronColorPalette, setElectronColorPalette] = useState(['#0081C9', '#5BC0F8', '#86E5FF']);
-  const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState('#707070');
-  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#999999');
-  const [nucleusParticleBorderWidth, setNucleusParticleBorderWidth] = useState(0.3);
-  const [nucleusLayerCount, setNucleusLayerCount] = useState(2);
-  const [nucleusParticlesPerLayer, setNucleusParticlesPerLayer] = useState(3);
-  const [nucleusParticleSize, setNucleusParticleSize] = useState(2.5);
-  const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(2.5);
-  const [nucleusSpeed, setNucleusSpeed] = useState(2);
+function App (): JSX.Element {
+  const [atomSize, setAtomSize] = useState(200)
+  const [displayElectronPaths, setDisplayElectronPaths] = useState(true)
+  const [displayNucleus, setDisplayNucleus] = useState(true)
+  const [electronPathColor, setElectronPathColor] = useState('#707070')
+  const [electronPathCount, setElectronPathCount] = useState(3)
+  const [electronPathWidth, setElectronPathWidth] = useState(0.5)
+  const [electronsPerPath, setElectronsPerPath] = useState(2)
+  const [electronSize, setElectronSize] = useState(1.5)
+  const [electronSpeed, setElectronSpeed] = useState(0.5)
+  const [electronNewColor, setElectronNewColor] = useState('#86E5FF')
+  const [electronColorPalette, setElectronColorPalette] = useState(['#0081C9', '#5BC0F8', '#86E5FF'])
+  const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState('#707070')
+  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#999999')
+  const [nucleusParticleBorderWidth, setNucleusParticleBorderWidth] = useState(0.3)
+  const [nucleusLayerCount, setNucleusLayerCount] = useState(2)
+  const [nucleusParticlesPerLayer, setNucleusParticlesPerLayer] = useState(3)
+  const [nucleusParticleSize, setNucleusParticleSize] = useState(2.5)
+  const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(2.5)
+  const [nucleusSpeed, setNucleusSpeed] = useState(2)
 
   const atomSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setAtomSize(Number(value));
-  }, []);
+    setAtomSize(Number(value))
+  }, [])
 
   const displayElectronPathsChangeHandler = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setDisplayElectronPaths(event.target.checked);
-  }, []);
+    setDisplayElectronPaths(event.target.checked)
+  }, [])
 
   const displayNucleusChangeHandler = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setDisplayNucleus(event.target.checked);
-  }, []);
+    setDisplayNucleus(event.target.checked)
+  }, [])
 
   const electronPathCountChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setElectronPathCount(Number(value));
-  }, []);
+    setElectronPathCount(Number(value))
+  }, [])
 
   const electronPathWidthChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setElectronPathWidth(Number(value));
-  }, []);
+    setElectronPathWidth(Number(value))
+  }, [])
 
   const electronsPerPathChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setElectronsPerPath(Number(value));
-  }, []);
+    setElectronsPerPath(Number(value))
+  }, [])
 
   const electronSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setElectronSize(Number(value));
-  }, []);
+    setElectronSize(Number(value))
+  }, [])
 
   const electronSpeedChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setElectronSpeed(Number(value));
-  }, []);
+    setElectronSpeed(Number(value))
+  }, [])
 
   const nucleusLayerCountChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setNucleusLayerCount(Number(value));
-  }, []);
+    setNucleusLayerCount(Number(value))
+  }, [])
 
   const nucleusParticlesPerLayerChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setNucleusParticlesPerLayer(Number(value));
-  }, []);
+    setNucleusParticlesPerLayer(Number(value))
+  }, [])
 
   const nucleusParticleBorderWidthChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setNucleusParticleBorderWidth(Number(value));
-  }, []);
+    setNucleusParticleBorderWidth(Number(value))
+  }, [])
 
   const nucleusParticleSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setNucleusParticleSize(Number(value));
-  }, []);
+    setNucleusParticleSize(Number(value))
+  }, [])
 
   const nucleusDistanceFromCenterChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setNucleusDistanceFromCenter(Number(value));
-  }, []);
+    setNucleusDistanceFromCenter(Number(value))
+  }, [])
 
   const nucleusSpeedChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
-    setNucleusSpeed(Number(value));
-  }, []);
+    setNucleusSpeed(Number(value))
+  }, [])
 
   const electronColorDeleteHandler = useCallback((electronColor: string) => () => {
     setElectronColorPalette(electronColorPalette.filter((color) => color !== electronColor))
-  }, [electronColorPalette]);
+  }, [electronColorPalette])
 
   const electronColorAddHandler = useCallback(() => {
-    setElectronColorPalette([...new Set([...electronColorPalette, electronNewColor])]);
-  }, [electronColorPalette, electronNewColor]);
+    setElectronColorPalette([...new Set([...electronColorPalette, electronNewColor])])
+  }, [electronColorPalette, electronNewColor])
 
-  const [showAtomicSpinner, setShowAtomicSpinner] = useState(true);
+  const [showAtomicSpinner, setShowAtomicSpinner] = useState(true)
 
   useEffect(() => {
-    setShowAtomicSpinner(false);
-    setTimeout(() => setShowAtomicSpinner(true), 1);
+    setShowAtomicSpinner(false)
+    setTimeout(() => { setShowAtomicSpinner(true) }, 1)
   }, [
     atomSize,
     displayElectronPaths,
@@ -123,7 +123,7 @@ function App() {
     nucleusParticleSize,
     nucleusDistanceFromCenter,
     nucleusSpeed
-  ]);
+  ])
 
   return (
     <Box sx={{ flexGrow: 1, padding: 5 }}>
@@ -132,7 +132,7 @@ function App() {
           <DarkModeToggle />
         </Grid>
         <Grid container>
-          <Grid xs={12} display="flex" sx={{minHeight: `${atomSize}px`, padding: 0}} justifyContent="center">
+          <Grid xs={12} display="flex" sx={{ minHeight: `${atomSize}px`, padding: 0 }} justifyContent="center">
             {showAtomicSpinner && (
               <AtomicSpinner
                 atomSize={atomSize}
@@ -335,7 +335,7 @@ function App() {
           <Grid xs={12} lg={3}>
             <SettingsBox>
               <Typography gutterBottom>Electron Color Palette</Typography>
-              <HexColorPicker style={{margin: '15px auto'}} color={electronNewColor} onChange={setElectronNewColor} />
+              <HexColorPicker style={{ margin: '15px auto' }} color={electronNewColor} onChange={setElectronNewColor} />
               <HexColorInput alpha color={electronNewColor} onChange={setElectronNewColor} />
               <IconButton aria-label="add" color="primary" onClick={electronColorAddHandler}>
                 <AddIcon />
@@ -343,7 +343,7 @@ function App() {
               {electronColorPalette.map((electronColor, i) =>
                 <Chip
                   key={electronColor}
-                  style={{backgroundColor: electronColor, margin: '2px'}}
+                  style={{ backgroundColor: electronColor, margin: '2px' }}
                   label={electronColor}
                   onDelete={electronColorDeleteHandler(electronColor)}
                 />
@@ -353,28 +353,28 @@ function App() {
           <Grid xs={12} lg={3}>
             <SettingsBox>
               <Typography gutterBottom>Electron Path Color</Typography>
-              <HexColorPicker style={{margin: '15px auto'}} color={electronPathColor} onChange={setElectronPathColor} />
+              <HexColorPicker style={{ margin: '15px auto' }} color={electronPathColor} onChange={setElectronPathColor} />
               <HexColorInput alpha color={electronPathColor} onChange={setElectronPathColor} />
             </SettingsBox>
           </Grid>
           <Grid xs={12} lg={3}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particle Fill Color</Typography>
-              <HexColorPicker style={{margin: '15px auto'}} color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
+              <HexColorPicker style={{ margin: '15px auto' }} color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
               <HexColorInput alpha color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
             </SettingsBox>
           </Grid>
           <Grid xs={12} lg={3}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particle Border Color</Typography>
-              <HexColorPicker style={{margin: '15px auto'}} color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
+              <HexColorPicker style={{ margin: '15px auto' }} color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
               <HexColorInput alpha color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
             </SettingsBox>
           </Grid>
         </Grid>
       </Grid>
     </Box>
-  );
+  )
 }
 
-export default App;
+export default App

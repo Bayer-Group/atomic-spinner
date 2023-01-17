@@ -1,5 +1,5 @@
-const path = require('path');
-const CompressionPlugin = require("compression-webpack-plugin");
+const path = require('path')
+const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -8,12 +8,12 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
+        exclude: /node_modules/
+      }
+    ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js']
   },
   output: {
     filename: 'index.js',
@@ -25,4 +25,4 @@ module.exports = {
     }
   },
   plugins: [new CompressionPlugin()]
-};
+}

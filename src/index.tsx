@@ -1,5 +1,5 @@
-import React from 'react';
+import React from 'react'
 
-import AtomicSpinner from './AtomicSpinner';
+import AtomicSpinner from './AtomicSpinner'
 
-export default React.memo(AtomicSpinner);
+export default React.memo(AtomicSpinner)

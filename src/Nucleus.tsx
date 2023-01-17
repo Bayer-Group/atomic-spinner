@@ -1,36 +1,36 @@
-import * as React from 'react';
+import * as React from 'react'
 
-export type NucleusProps = {
-  layerCount: number,
-  particlesPerLayer: number,
-  particleFillColor: string,
-  particleBorderColor: string,
-  particleBorderWidth: number,
-  particleSize: number,
-  distanceFromCenter: number,
+export interface NucleusProps {
+  layerCount: number
+  particlesPerLayer: number
+  particleFillColor: string
+  particleBorderColor: string
+  particleBorderWidth: number
+  particleSize: number
+  distanceFromCenter: number
   orbitTime: number
 }
 
 type NucleusLayerProps = NucleusProps & {
-  particlesPerLayer: number,
+  particlesPerLayer: number
   startingAngle: number
 }
 
 const NucleusLayer = ({
   particleFillColor, particleBorderColor, particleBorderWidth, particlesPerLayer, particleSize, distanceFromCenter, orbitTime, startingAngle
-}: NucleusLayerProps) => {
+}: NucleusLayerProps): JSX.Element => {
   const particles: JSX.Element[] = Array.from({ length: particlesPerLayer })
     .map((_, i) => {
-      const rotationAngle = startingAngle + i * ((2 * Math.PI) / particlesPerLayer);
-      const offsetX = particlesPerLayer > 1 ? distanceFromCenter * Math.cos(rotationAngle) : 0;
-      const offsetY = particlesPerLayer > 1 ? distanceFromCenter * Math.sin(rotationAngle) : 0;
+      const rotationAngle = startingAngle + i * ((2 * Math.PI) / particlesPerLayer)
+      const offsetX = particlesPerLayer > 1 ? distanceFromCenter * Math.cos(rotationAngle) : 0
+      const offsetY = particlesPerLayer > 1 ? distanceFromCenter * Math.sin(rotationAngle) : 0
 
       const particleDimensions = {
         cx: 50 + offsetX,
         cy: 50 + offsetY
-      };
+      }
 
-      const effectiveBorderWidth = Math.min(particleBorderWidth, particleSize / 3);
+      const effectiveBorderWidth = Math.min(particleBorderWidth, particleSize / 3)
 
       return (
         <React.Fragment key={`particle-${rotationAngle}`}>
@@ -52,8 +52,8 @@ const NucleusLayer = ({
             mask={i > Math.floor(particlesPerLayer / 2) ? `url('#layer-${startingAngle}-bottom-particle')` : undefined}
           />
         </React.Fragment>
-      );
-    });
+      )
+    })
 
   return (
     <g>
@@ -68,10 +68,10 @@ const NucleusLayer = ({
       />
       {particles}
     </g>
-  );
-};
+  )
+}
 
-const Nucleus = (props: NucleusProps) => {
+const Nucleus = (props: NucleusProps): JSX.Element => {
   const angleIncrement = props.particlesPerLayer % 2 === 0
     ? Math.PI / 2 / Math.max(1, (props.layerCount - 1))
     : Math.PI / Math.max(1, (props.layerCount - 1))
@@ -79,16 +79,16 @@ const Nucleus = (props: NucleusProps) => {
   return (
     <>
       {Array.from({ length: props.layerCount }).map((_, index) => {
-        const startingAngle = index * angleIncrement;
+        const startingAngle = index * angleIncrement
         return <NucleusLayer
           key={`nucleus-layer-${startingAngle}`}
           {...props}
           particlesPerLayer={props.particlesPerLayer}
-          startingAngle={startingAngle} />;
+          startingAngle={startingAngle} />
       }
       )}
     </>
-  );
+  )
 }
 
-export default Nucleus;
+export default Nucleus

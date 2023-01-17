@@ -1,28 +1,28 @@
-import React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material';
+import React from 'react'
+import { createTheme, ThemeProvider } from '@mui/material'
 
-export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = React.createContext({ toggleColorMode: () => {} })
 
-const MaterialThemeContextProvider = ({ children }: any) => {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+const MaterialThemeContextProvider = ({ children }: any): JSX.Element => {
+  const [mode, setMode] = React.useState<'light' | 'dark'>('light')
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
+      }
     }),
-    [],
-  );
+    []
+  )
 
   const theme = React.useMemo(
     () =>
       createTheme({
         palette: {
-          mode,
-        },
+          mode
+        }
       }),
-    [mode],
-  );
+    [mode]
+  )
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -30,7 +30,7 @@ const MaterialThemeContextProvider = ({ children }: any) => {
         {children}
       </ThemeProvider>
     </ColorModeContext.Provider>
-  );
-};
+  )
+}
 
-export default MaterialThemeContextProvider;
+export default MaterialThemeContextProvider

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
 /// <reference types="cypress" />
 // ***********************************************
 // This example commands.ts shows you how to
