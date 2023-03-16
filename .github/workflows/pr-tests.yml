@@ -20,3 +20,13 @@ jobs:
     - run: pnpm i
     - run: pnpm lint
     - run: pnpm test
+    - name: Save Cypress Output
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: cypress-output
+        path: |
+          cypress/screenshots/
+          cypress/videos/
+          cypress/downloads/
+        retention-days: 7
