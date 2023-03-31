@@ -42,8 +42,8 @@ jobs:
       - run: npm i -g pnpm
       - run: pnpm i
       - run: pnpm --prefix demo i
-      - run: pnpm --prefix demo un atomic-spinner
-      - run: pnpm --prefix demo i atomic-spinner@latest
+      - run: pnpm --prefix demo unlink ..
+      - run: pnpm --prefix demo i atomic-spinner
       - name: Set Github identity
         run: |
           git config user.email "support+actions@github.com"

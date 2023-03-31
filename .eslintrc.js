@@ -4,7 +4,7 @@ module.exports = {
     es2021: true
   },
   ignorePatterns: [
-    'dist/',
+    'lib/',
     'demo/',
     'cypress/',
     'cypress.config.ts',

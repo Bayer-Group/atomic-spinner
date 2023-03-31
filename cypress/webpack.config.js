@@ -2,7 +2,7 @@ const path = require('path')
 const CompressionPlugin = require('compression-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: '../src/index.tsx',
   module: {
     rules: [
       {
@@ -19,14 +19,7 @@ module.exports = {
   },
   output: {
     filename: 'index.js',
-    path: path.resolve(__dirname, 'dist'),
-    library: {
-      name: 'atomic-spinner',
-      type: 'umd',
-      umdNamedDefine: true
-    }
+    path: path.resolve(__dirname, 'lib')
   },
-  plugins: [
-    new CompressionPlugin()
-  ]
+  plugins: []
 }
