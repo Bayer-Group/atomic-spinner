@@ -56,6 +56,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
   const electronPathDefinitionId = 'electronPath'
   const electronDefinitionId = 'electron'
 
+  const colorOffset = Math.floor(Math.random() * electronColorPalette.length)
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -92,12 +94,12 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
             rotationAngle={rotationAngle}
           />
         ))}
-      {electronPaths.map(({ electronCount, rotationAngle, electronOrbitTime }) => {
+      {electronPaths.map(({ electronCount, rotationAngle, electronOrbitTime }, pathIndex) => {
         const randomSpacetimeShift = (-1 + Math.random() * -1) * electronOrbitTime
 
         return Array.from({ length: electronCount })
-          .map((_, i) => {
-            const electronKey = i
+          .map((_, electronIndex) => {
+            const electronKey = electronIndex
 
             return (
               <Electron
@@ -106,8 +108,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
                 rotationAngle={rotationAngle}
                 orbitTime={electronOrbitTime}
                 size={electronSize}
-                spacetimeOffset={randomSpacetimeShift + i * (electronOrbitTime / (electronCount))}
-                colorPalette={electronColorPalette} />
+                spacetimeOffset={randomSpacetimeShift + electronIndex * (electronOrbitTime / (electronCount))}
+                color={electronColorPalette[(pathIndex * electronsPerPath + electronIndex + colorOffset) % electronColorPalette.length] ?? '#000'} />
             )
           })
       })}

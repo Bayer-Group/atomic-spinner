@@ -6,25 +6,15 @@ export interface ElectronProps {
   orbitTime: number
   spacetimeOffset: number
   size: number
-  colorPalette: string[]
+  color: string
 }
 
-let unusedColors: string[] = []
-
 const Electron = ({
-  pathDefinitionId, rotationAngle, orbitTime, spacetimeOffset, size, colorPalette
+  pathDefinitionId, rotationAngle, orbitTime, spacetimeOffset, size, color
 }: ElectronProps): JSX.Element => {
-  const getNextElectronColor = (): string => {
-    if (unusedColors.length === 0) {
-      unusedColors = [...colorPalette]
-    }
-
-    return unusedColors.pop() ?? '#000000'
-  }
-
   return (
     <g data-testid="electron" transform={`rotate(${rotationAngle} 50 50)`}>
-      <circle cx="50" cy="15" r={size} fill={getNextElectronColor()}>
+      <circle cx="50" cy="15" r={size} fill={color}>
         <animateMotion
           dur={`${orbitTime}s`}
           repeatCount="indefinite"
