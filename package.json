@@ -46,17 +46,17 @@
     "react-dom": ">=17.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-commonjs": "^24.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
     "@types/node": "^18.15.11",
     "@types/prop-types": "^15.7.5",
-    "@types/react": "^18.0.31",
+    "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "@types/webpack": "^5.28.1",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
     "compression-webpack-plugin": "^10.0.0",
     "cypress": "^12.9.0",
-    "eslint": "^8.37.0",
+    "eslint": "^8.38.0",
     "eslint-config-standard-with-typescript": "^34.0.1",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.7.0",
@@ -73,7 +73,7 @@
     "ts-loader": "^9.4.2",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
-    "typescript": "^5.0.3",
-    "webpack": "^5.77.0"
+    "typescript": "^5.0.4",
+    "webpack": "^5.79.0"
   }
 }
