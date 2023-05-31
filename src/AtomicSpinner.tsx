@@ -128,13 +128,13 @@ AtomicSpinner.propTypes = {
   electronsPerPath: PropTypes.number,
   electronSize: PropTypes.number,
   electronSpeed: PropTypes.number,
+  nucleusDistanceFromCenter: PropTypes.number,
   nucleusLayerCount: PropTypes.number,
   nucleusParticlesPerLayer: PropTypes.number,
   nucleusParticleFillColor: PropTypes.string,
   nucleusParticleBorderColor: PropTypes.string,
-  nucleusParticleSize: PropTypes.number,
-  nucleusDistanceFromCenter: PropTypes.number,
   nucleusParticleBorderWidth: PropTypes.number,
+  nucleusParticleSize: PropTypes.number,
   nucleusSpeed: PropTypes.number
 }
 
