@@ -4,7 +4,7 @@
   "description": "Customizable React loading spinner that looks like an atom",
   "author": "David Lounsbrough",
   "license": "MIT",
-  "repository": "Codenough-LLC/atomic-spinner",
+  "repository": "Bayer-Group/atomic-spinner",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",

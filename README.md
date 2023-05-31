@@ -1,13 +1,13 @@
 [![npm](https://img.shields.io/npm/v/atomic-spinner?logo=npm)](https://www.npmjs.com/package/atomic-spinner)
 [![npm bundle size](https://img.shields.io/bundlephobia/min/atomic-spinner)](https://bundlephobia.com/package/atomic-spinner)
-[![Publish New Release](https://github.com/Codenough-LLC/atomic-spinner/actions/workflows/publish-new-release.yml/badge.svg)](https://github.com/Codenough-LLC/atomic-spinner/actions/workflows/publish-new-release.yml)
+[![Publish New Release](https://github.com/Bayer-Group/atomic-spinner/actions/workflows/publish-new-release.yml/badge.svg)](https://github.com/Bayer-Group/atomic-spinner/actions/workflows/publish-new-release.yml)
 
 # atomic-spinner
 Customizable React loading spinner that looks like an [atom](https://en.wikipedia.org/wiki/Atom)
 
 ## Live Demo
 
-https://codenough-llc.github.io/atomic-spinner/
+https://bayer-group.github.io/atomic-spinner/
 
 ## Examples
 ![example-atom-1](https://user-images.githubusercontent.com/8313853/210661410-c2d977d8-426c-438f-b24b-cdbfc4b506f4.svg)
