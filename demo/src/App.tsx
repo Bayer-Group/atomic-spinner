@@ -340,7 +340,7 @@ function App (): JSX.Element {
               <IconButton aria-label="add" color="primary" onClick={electronColorAddHandler}>
                 <AddIcon />
               </IconButton>
-              {electronColorPalette.map((electronColor, i) =>
+              {electronColorPalette.map((electronColor) =>
                 <Chip
                   key={electronColor}
                   style={{ backgroundColor: electronColor, margin: '2px' }}
