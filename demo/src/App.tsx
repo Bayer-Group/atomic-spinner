@@ -10,11 +10,11 @@ import {
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { HexColorPicker, HexColorInput } from 'react-colorful'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { JSX, useCallback, useEffect, useState } from 'react'
 import SettingsBox from './SettingsBox'
 import DarkModeToggle from './DarkModeToggle'
 
-function App (): JSX.Element {
+function App(): JSX.Element {
   const [atomSize, setAtomSize] = useState(200)
   const [displayElectronPaths, setDisplayElectronPaths] = useState(true)
   const [displayNucleus, setDisplayNucleus] = useState(true)
@@ -34,6 +34,7 @@ function App (): JSX.Element {
   const [nucleusParticleSize, setNucleusParticleSize] = useState(2.5)
   const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(2.5)
   const [nucleusSpeed, setNucleusSpeed] = useState(2)
+  const [nucleusMaskOverlap, setNucleusMaskOverlap] = useState(true)
 
   const atomSizeChangeHandler = useCallback((_event: unknown, value: number | number[]) => {
     setAtomSize(Number(value))
@@ -99,6 +100,10 @@ function App (): JSX.Element {
     setElectronColorPalette([...new Set([...electronColorPalette, electronNewColor])])
   }, [electronColorPalette, electronNewColor])
 
+  const nucleusMaskOverlapChangeHandler = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    setNucleusMaskOverlap(event.target.checked)
+  }, [])
+
   const [showAtomicSpinner, setShowAtomicSpinner] = useState(true)
 
   useEffect(() => {
@@ -153,6 +158,7 @@ function App (): JSX.Element {
                 nucleusParticleSize={nucleusParticleSize}
                 nucleusDistanceFromCenter={nucleusDistanceFromCenter}
                 nucleusSpeed={nucleusSpeed}
+                nucleusMaskOverlap={nucleusMaskOverlap}
               />
             )}
           </Grid>
@@ -327,6 +333,15 @@ function App (): JSX.Element {
                 min={0}
                 max={10}
                 onChangeCommitted={nucleusSpeedChangeHandler}
+              />
+            </SettingsBox>
+          </Grid>
+          <Grid xs={12} lg={2}>
+            <SettingsBox>
+              <Typography gutterBottom>Nucleus Mask Overlap</Typography>
+              <Switch
+                checked={nucleusMaskOverlap}
+                onChange={nucleusMaskOverlapChangeHandler}
               />
             </SettingsBox>
           </Grid>

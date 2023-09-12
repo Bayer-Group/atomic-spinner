@@ -1,4 +1,4 @@
-import React, { useContext, useCallback } from 'react'
+import React, {JSX, useContext, useCallback } from 'react'
 import { styled, Switch } from '@mui/material'
 import { ColorModeContext } from './contexts/MaterialThemeContextProvider'
 

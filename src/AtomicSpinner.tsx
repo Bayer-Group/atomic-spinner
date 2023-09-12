@@ -24,6 +24,7 @@ export interface AtomicSpinnerProps {
   nucleusParticleSize?: number
   nucleusDistanceFromCenter?: number
   nucleusSpeed?: number
+  nucleusMaskOverlap?: boolean
 }
 
 const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
@@ -44,7 +45,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
   nucleusParticleBorderWidth = 0.3,
   nucleusParticleSize = 2.5,
   nucleusDistanceFromCenter = 2.5,
-  nucleusSpeed = 2
+  nucleusSpeed = 2,
+  nucleusMaskOverlap = true
 }: AtomicSpinnerProps) => {
   const electronPaths = Array.from({ length: electronPathCount })
     .map((_, i) => ({
@@ -82,6 +84,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
             particleBorderColor={nucleusParticleBorderColor}
             particleBorderWidth={nucleusParticleBorderWidth}
             orbitTime={10 / nucleusSpeed}
+            nucleusMaskOverlap={nucleusMaskOverlap}
           />
         )}
       {displayElectronPaths &&
@@ -135,7 +138,8 @@ AtomicSpinner.propTypes = {
   nucleusParticleBorderColor: PropTypes.string,
   nucleusParticleBorderWidth: PropTypes.number,
   nucleusParticleSize: PropTypes.number,
-  nucleusSpeed: PropTypes.number
+  nucleusSpeed: PropTypes.number,
+  nucleusMaskOverlap: PropTypes.bool
 }
 
 export default AtomicSpinner

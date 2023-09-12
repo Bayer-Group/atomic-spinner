@@ -9,6 +9,7 @@ export interface NucleusProps {
   particleSize: number
   distanceFromCenter: number
   orbitTime: number
+  nucleusMaskOverlap: boolean
 }
 
 type NucleusLayerProps = NucleusProps & {
@@ -17,9 +18,9 @@ type NucleusLayerProps = NucleusProps & {
 }
 
 const NucleusLayer = ({
-  particleFillColor, particleBorderColor, particleBorderWidth, particlesPerLayer, particleSize, distanceFromCenter, orbitTime, startingAngle
-}: NucleusLayerProps): JSX.Element => {
-  const particles: JSX.Element[] = Array.from({ length: particlesPerLayer })
+  particleFillColor, particleBorderColor, particleBorderWidth, particlesPerLayer, particleSize, distanceFromCenter, orbitTime, startingAngle, nucleusMaskOverlap
+}: NucleusLayerProps): React.JSX.Element => {
+  const particles: React.JSX.Element[] = Array.from({ length: particlesPerLayer })
     .map((_, i) => {
       const rotationAngle = startingAngle + i * ((2 * Math.PI) / particlesPerLayer)
       const offsetX = particlesPerLayer > 1 ? distanceFromCenter * Math.cos(rotationAngle) : 0
@@ -34,7 +35,7 @@ const NucleusLayer = ({
 
       return (
         <React.Fragment key={`particle-${rotationAngle}`}>
-          {effectiveBorderWidth > 0 && i === 0 && (
+          {nucleusMaskOverlap && effectiveBorderWidth > 0 && i === 0 && (
             <mask id={`layer-${startingAngle}-bottom-particle`}>
               <rect x="0" y="0" width="100" height="100" fill="white"></rect>
               <circle
@@ -49,7 +50,7 @@ const NucleusLayer = ({
             fill={particleFillColor}
             stroke={particleBorderColor}
             strokeWidth={effectiveBorderWidth}
-            mask={i > Math.floor(particlesPerLayer / 2) ? `url('#layer-${startingAngle}-bottom-particle')` : undefined}
+            mask={nucleusMaskOverlap && i > Math.floor(particlesPerLayer / 2) ? `url('#layer-${startingAngle}-bottom-particle')` : undefined}
           />
         </React.Fragment>
       )

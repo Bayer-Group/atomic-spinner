@@ -9,7 +9,7 @@ export interface ElectronPathProps {
 
 const ElectronPath = ({
   pathDefinitionId, color, width, rotationAngle
-}: ElectronPathProps): JSX.Element => {
+}: ElectronPathProps): React.JSX.Element => {
   return (
     <g transform={`rotate(${rotationAngle} 50 50)`}>
       <use href={`#${pathDefinitionId}`} stroke={color} strokeWidth={width} />
