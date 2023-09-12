@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { JSX, ReactNode } from 'react'
 import { createTheme, ThemeProvider } from '@mui/material'
 
 export const ColorModeContext = React.createContext({ toggleColorMode: () => { } })

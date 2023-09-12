@@ -57,3 +57,4 @@ export default App
 | nucleusParticleBorderWidth | number | 0.3 |
 | nucleusParticleSize | number | 2.5 |
 | nucleusSpeed | number | 2 |
+| nucleusMaskOverlap | bool | true |
