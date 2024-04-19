@@ -73,16 +73,22 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
     const svgElement = (universeSvgRef.current as unknown as SVGElement | undefined)
 
     if (svgElement) {
-      const viewBoxPaddingPercent = 0.2;
       const bodyBoundaries = universe.getBodyBoundaries();
-      const viewBoxPadding = viewBoxPaddingPercent * Math.max(
-        ...bodyBoundaries.x.map(Math.abs), ...bodyBoundaries.y.map(Math.abs)
-      );
+
+      const viewBoxPaddingPercent = 1.2;
+      const bodiesWidth = bodyBoundaries.x[1] - bodyBoundaries.x[0]
+      const bodiesHeight = bodyBoundaries.y[1] - bodyBoundaries.y[0]
+      const viewBoxSize = Math.max(
+        bodiesWidth,
+        bodiesHeight,
+        Math.max(...universe.bodies.map(({ radius }) => radius)) * 25
+      ) * viewBoxPaddingPercent
+
       const containingViewBox = {
-        minX: bodyBoundaries.x[0] - viewBoxPadding,
-        minY: bodyBoundaries.y[0] - viewBoxPadding,
-        width: bodyBoundaries.x[1] - bodyBoundaries.x[0] + viewBoxPadding * 2,
-        height: bodyBoundaries.y[1] - bodyBoundaries.y[0] + viewBoxPadding * 2
+        minX: bodyBoundaries.x[0] - (viewBoxSize - bodiesWidth) / 2,
+        minY: bodyBoundaries.y[0] - (viewBoxSize - bodiesHeight) / 2,
+        width: viewBoxSize,
+        height: viewBoxSize
       };
       svgElement.setAttribute('viewBox', `${containingViewBox.minX}, ${containingViewBox.minY}, ${containingViewBox.width}, ${containingViewBox.height}`)
 

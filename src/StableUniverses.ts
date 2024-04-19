@@ -71,7 +71,7 @@ export const Random = new Universe({
       velocity: new Vector(getRandom(), getRandom(), 0).scaleTo(getRandom() * 0.001),
       color: '#008ebd'
     })
-  ]
+  ], collisions: false
 });
 
 const figureEightRadius = 0.3;
