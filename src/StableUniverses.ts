@@ -30,19 +30,19 @@ const equalChaseInOutSpeed = 0.006;
 export const EqualChaseInOut = new Universe({
   bodies: [
     new Body({
-      mass: 1000000,
+      mass: 5000000,
       position: new Vector(0, -0.7320508076, 0),
       velocity: new Vector(1, 0, 0).scaleTo(equalChaseInOutSpeed),
       color: '#3d9900'
     }),
     new Body({
-      mass: 1000000,
+      mass: 5000000,
       position: new Vector(1, 1, 0),
       velocity: new Vector(-1, 1 * Math.tan(60 * Math.PI / 180), 0).scaleTo(equalChaseInOutSpeed),
       color: '#00314e'
     }),
     new Body({
-      mass: 1000000,
+      mass: 5000000,
       position: new Vector(-1, 1, 0),
       velocity: new Vector(-1, -1 * Math.tan(60 * Math.PI / 180), 0).scaleTo(equalChaseInOutSpeed),
       color: '#008ebd'
