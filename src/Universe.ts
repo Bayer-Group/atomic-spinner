@@ -32,7 +32,7 @@ export default class Universe {
     this.bodies = bodies
     this.deltaTime = deltaTime ?? 0.5
     this.gravity = gravity ?? 6.674e-11
-    this.collisions = collisions ?? true
+    this.collisions = collisions ?? false
     this.renderFitMode = renderFitMode ?? RenderFitMode.ContainBodies
     this.fixedViewPortSize = fixedViewPortSize
   }
@@ -57,7 +57,7 @@ export default class Universe {
   bounceCollisions = (body1: Body, index1: number) => {
     this.bodies.forEach((body2, index2) => {
       if (index1 !== index2) {
-        const distanceBetweenBodies = body2.position.distance(body1.position);
+        const distanceBetweenBodies = body2.position.distance(body1.position)
         if (distanceBetweenBodies < body1.radius + body2.radius) {
           body2.position.sum(body2.position.diff(body1.position).scaleTo(body1.radius + body2.radius))
 

@@ -64,7 +64,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
 
   const colorOffset = Math.floor(Math.random() * electronColorPalette.length)
 
-  const universe = EqualChaseInOut
+  const universe = Random
   console.log(universe.bodies)
 
   let timeout: NodeJS.Timeout;

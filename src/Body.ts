@@ -11,14 +11,16 @@ export default class Body {
   externalForces: Vector[] = []
   netExternalForce: Vector = new Vector(0, 0, 0)
   pastPositions: Vector[] = []
+  maxVelocity: number | undefined
 
-  constructor({ mass, radius, position, velocity, color, tailLength }: {
+  constructor({ mass, radius, position, velocity, color, tailLength, maxVelocity }: {
     mass?: number
     radius?: number
     position: Vector
     velocity: Vector
     color?: string
     tailLength?: number
+    maxVelocity?: number
   }) {
     if (mass === 0) {
       throw new Error('Mass cannot be 0 for a body!')
@@ -31,6 +33,7 @@ export default class Body {
     this.position = position
     this.pastPositions.push(position)
     this.velocity = velocity
+    this.maxVelocity = maxVelocity
   }
 
   setExternalForces(externalForces: Vector[]) {
@@ -50,6 +53,9 @@ export default class Body {
   moveBodyThroughTime(deltaTime: number) {
     const deltaVelocity = this.acceleration.scaleBy(deltaTime)
     this.velocity = this.velocity.sum(deltaVelocity)
+    if (this.maxVelocity && this.velocity.getMagnitude() > this.maxVelocity) {
+      this.velocity = this.velocity.scaleTo(this.maxVelocity)
+    }
     const deltaPosition = this.velocity.scaleBy(deltaTime)
     this.position = this.position.sum(deltaPosition)
     if (this.pastPositions.length >= this.tailLength) {
