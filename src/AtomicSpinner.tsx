@@ -109,7 +109,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
         })
       })
     }
-    timeout = setTimeout(moveBodies, 1);
+    timeout = setTimeout(moveBodies, 0);
   }
 
   React.useEffect(() => {
