@@ -130,7 +130,6 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
         xmlns="http://www.w3.org/2000/svg"
         width={1200}
         height={800}
-        viewBox="-5 -5 10 10"
         style={{ background: '#000' }}
       >
         <defs>
@@ -139,7 +138,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
               key={`body-shadow-${bodyIndex}`}
               id={`body-shadow-${bodyIndex}`}
             >
-              <feGaussianBlur stdDeviation="0.2" />
+              <feGaussianBlur stdDeviation="0.02" />
             </filter>
           ))}
         </defs>
@@ -166,8 +165,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
           >
             <circle
               fill={body.color}
-              r={body.radius}
-              opacity={0.05}
+              r={body.radius * 3}
+              opacity={0.1}
               cx={body.position.x}
               cy={body.position.y}
               style={{
@@ -175,6 +174,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
               }}
             />
             <circle
+              stroke="#000"
+              strokeWidth={body.radius * 0.05}
               fill={body.color}
               r={body.radius}
               cx={body.position.x}
