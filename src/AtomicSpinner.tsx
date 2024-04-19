@@ -5,7 +5,7 @@ import Electron from './Electron'
 import Nucleus from './Nucleus'
 import Vector from './Vector';
 import Body from './Body';
-import Universe from './Universe';
+import Universe, { RenderFitMode } from './Universe';
 import { EqualChaseCircular, EqualChaseInOut, FigureEight, Random } from './StableUniverses'
 
 export interface AtomicSpinnerProps {
@@ -64,7 +64,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
 
   const colorOffset = Math.floor(Math.random() * electronColorPalette.length)
 
-  const universe = EqualChaseCircular;
+  const universe = EqualChaseInOut
   console.log(universe.bodies)
 
   let timeout: NodeJS.Timeout;
@@ -79,15 +79,15 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
       const viewBoxPaddingPercent = 1.2;
       const bodiesWidth = bodyBoundaries.x[1] - bodyBoundaries.x[0]
       const bodiesHeight = bodyBoundaries.y[1] - bodyBoundaries.y[0]
-      const viewBoxSize = Math.max(
+      const viewBoxSize = universe.fixedViewPortSize ?? Math.max(
         bodiesWidth,
         bodiesHeight,
         Math.max(...universe.bodies.map(({ radius }) => radius)) * 25
       ) * viewBoxPaddingPercent
 
       const containingViewBox = {
-        minX: centerOfMass.x - viewBoxSize / 2,
-        minY: centerOfMass.y - viewBoxSize / 2,
+        minX: universe.renderFitMode === RenderFitMode.CenterOfMass ? centerOfMass.x - viewBoxSize / 2 : bodyBoundaries.x[0] - (viewBoxSize - bodiesWidth) / 2,
+        minY: universe.renderFitMode === RenderFitMode.CenterOfMass ? centerOfMass.y - viewBoxSize / 2 : bodyBoundaries.y[0] - (viewBoxSize - bodiesHeight) / 2,
         width: viewBoxSize,
         height: viewBoxSize
       };
@@ -103,7 +103,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
 
         body.pastPositions.forEach((position, tailIndex) => {
           const tailCircle = svgElement.querySelector(`#tail-circle-${bodyIndex}-${tailIndex}`)
-          tailCircle?.setAttribute('r', (0.005 - 0.005 * (tailIndex / (body.pastPositions.length - 1))).toFixed(3))
+          tailCircle?.setAttribute('r', (body.radius / 3 * (1 - 1 * (tailIndex / (body.pastPositions.length - 1)))).toFixed(3))
           tailCircle?.setAttribute('cx', position.x.toString())
           tailCircle?.setAttribute('cy', position.y.toString())
         })

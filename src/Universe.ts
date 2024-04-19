@@ -1,22 +1,40 @@
 import Vector from './Vector'
 import Body from './Body'
 
+export enum RenderFitMode {
+  ContainBodies,
+  CenterOfMass
+}
+
 export default class Universe {
   bodies: Body[]
   gravity: number
   collisions: boolean
   deltaTime: number
+  renderFitMode: RenderFitMode
+  fixedViewPortSize: number | undefined
 
-  constructor({ bodies, gravity, collisions, deltaTime }: {
+  constructor({
+    bodies,
+    gravity,
+    collisions,
+    deltaTime,
+    renderFitMode,
+    fixedViewPortSize
+  }: {
     bodies: Body[]
     gravity?: number
     collisions?: boolean
     deltaTime?: number
+    renderFitMode?: RenderFitMode
+    fixedViewPortSize?: number
   }) {
     this.bodies = bodies
     this.deltaTime = deltaTime ?? 0.5
     this.gravity = gravity ?? 6.674e-11
     this.collisions = collisions ?? true
+    this.renderFitMode = renderFitMode ?? RenderFitMode.ContainBodies
+    this.fixedViewPortSize = fixedViewPortSize
   }
 
   calculateGravitationalForces = () => {

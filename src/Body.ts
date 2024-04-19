@@ -25,7 +25,7 @@ export default class Body {
     }
 
     this.mass = mass ?? 1000000
-    this.radius = radius ?? 0.02
+    this.radius = radius ?? 0.04
     this.tailLength = tailLength ?? 200
     this.color = color ?? '#000'
     this.position = position

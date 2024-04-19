@@ -1,5 +1,5 @@
 import Body from './Body'
-import Universe from './Universe';
+import Universe, { RenderFitMode } from './Universe';
 import Vector from './Vector';
 
 const equalChaseCircularSpeed = 0.008125;
@@ -23,7 +23,7 @@ export const EqualChaseCircular = new Universe({
       velocity: new Vector(-1, -1 * Math.tan(60 * Math.PI / 180), 0).scaleTo(equalChaseCircularSpeed),
       color: '#008ebd'
     })
-  ]
+  ], fixedViewPortSize: 3, renderFitMode: RenderFitMode.CenterOfMass
 });
 
 const equalChaseInOutSpeed = 0.006;
@@ -47,7 +47,7 @@ export const EqualChaseInOut = new Universe({
       velocity: new Vector(-1, -1 * Math.tan(60 * Math.PI / 180), 0).scaleTo(equalChaseInOutSpeed),
       color: '#008ebd'
     })
-  ]
+  ], fixedViewPortSize: 3, renderFitMode: RenderFitMode.CenterOfMass
 });
 
 const getRandom = () => -1 + Math.random() * 2;
