@@ -83,4 +83,11 @@ export default class Universe {
       return agg
     }, { x: [Infinity, -Infinity], y: [Infinity, -Infinity], z: [Infinity, -Infinity] })
   }
+
+  getCenterOfMass = () => {
+    const totalMass = this.bodies.reduce((agg, { mass }) => agg + mass, 0)
+    return this.bodies.reduce((agg, { mass, position }) => {
+      return agg.sum(position.scaleBy((mass / totalMass)))
+    }, new Vector(0, 0, 0))
+  }
 }

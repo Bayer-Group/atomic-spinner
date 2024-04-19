@@ -64,7 +64,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
 
   const colorOffset = Math.floor(Math.random() * electronColorPalette.length)
 
-  const universe = Random;
+  const universe = EqualChaseCircular;
   console.log(universe.bodies)
 
   let timeout: NodeJS.Timeout;
@@ -73,6 +73,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
     const svgElement = (universeSvgRef.current as unknown as SVGElement | undefined)
 
     if (svgElement) {
+      const centerOfMass = universe.getCenterOfMass();
       const bodyBoundaries = universe.getBodyBoundaries();
 
       const viewBoxPaddingPercent = 1.2;
@@ -85,11 +86,12 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
       ) * viewBoxPaddingPercent
 
       const containingViewBox = {
-        minX: bodyBoundaries.x[0] - (viewBoxSize - bodiesWidth) / 2,
-        minY: bodyBoundaries.y[0] - (viewBoxSize - bodiesHeight) / 2,
+        minX: centerOfMass.x - viewBoxSize / 2,
+        minY: centerOfMass.y - viewBoxSize / 2,
         width: viewBoxSize,
         height: viewBoxSize
       };
+
       svgElement.setAttribute('viewBox', `${containingViewBox.minX}, ${containingViewBox.minY}, ${containingViewBox.width}, ${containingViewBox.height}`)
 
       universe.bodies.forEach((body, bodyIndex) => {
@@ -101,7 +103,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
 
         body.pastPositions.forEach((position, tailIndex) => {
           const tailCircle = svgElement.querySelector(`#tail-circle-${bodyIndex}-${tailIndex}`)
-          tailCircle?.setAttribute('r', (0.02 - 0.02 * (tailIndex / (body.pastPositions.length - 1))).toFixed(3))
+          tailCircle?.setAttribute('r', (0.005 - 0.005 * (tailIndex / (body.pastPositions.length - 1))).toFixed(3))
           tailCircle?.setAttribute('cx', position.x.toString())
           tailCircle?.setAttribute('cy', position.y.toString())
         })
