@@ -1,9 +1,12 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-
 import ElectronPath from './ElectronPath'
 import Electron from './Electron'
 import Nucleus from './Nucleus'
+import Vector from './Vector';
+import Body from './Body';
+import Universe from './Universe';
+import { EqualChaseCircular, EqualChaseInOut, FigureEight, Random } from './StableUniverses'
 
 export interface AtomicSpinnerProps {
   atomSize?: number
@@ -48,6 +51,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
   nucleusSpeed = 2,
   nucleusMaskOverlap = true
 }: AtomicSpinnerProps) => {
+  const universeSvgRef = React.useRef();
   const electronPaths = Array.from({ length: electronPathCount })
     .map((_, i) => ({
       rotationAngle: 0 + i * (180 / electronPathCount),
@@ -60,63 +64,118 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
 
   const colorOffset = Math.floor(Math.random() * electronColorPalette.length)
 
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      width={atomSize}
-      height={atomSize}
-      viewBox="0 0 100 100"
-      preserveAspectRatio="xMidYMid"
-    >
-      <defs>
-        <path id={electronPathDefinitionId} d="M50 15A15 35 0 0 1 50 85A15 35 0 0 1 50 15" fill="none" />
-        <path id={electronDefinitionId} d="M0 0A15 35 0 0 1 0 70A15 35 0 0 1 0 0" fill="none" />
-      </defs>
-      {displayNucleus &&
-        (
-          <Nucleus
-            layerCount={nucleusLayerCount}
-            particlesPerLayer={nucleusParticlesPerLayer}
-            particleSize={nucleusParticleSize}
-            distanceFromCenter={nucleusDistanceFromCenter}
-            particleFillColor={nucleusParticleFillColor}
-            particleBorderColor={nucleusParticleBorderColor}
-            particleBorderWidth={nucleusParticleBorderWidth}
-            orbitTime={10 / nucleusSpeed}
-            nucleusMaskOverlap={nucleusMaskOverlap}
-          />
-        )}
-      {displayElectronPaths &&
-        electronPaths.map(({ rotationAngle }) => (
-          <ElectronPath
-            key={`electron-path-${rotationAngle}`}
-            pathDefinitionId={electronPathDefinitionId}
-            color={electronPathColor}
-            width={electronPathWidth}
-            rotationAngle={rotationAngle}
-          />
-        ))}
-      {electronPaths.map(({ electronCount, rotationAngle, electronOrbitTime }, pathIndex) => {
-        const randomSpacetimeShift = (-1 + Math.random() * -1) * electronOrbitTime
+  const universe = Random;
+  console.log(universe.bodies)
 
-        return Array.from({ length: electronCount })
-          .map((_, electronIndex) => {
-            const electronKey = electronIndex
+  let timeout: NodeJS.Timeout;
+  const moveBodies = () => {
+    universe.moveBodiesThroughTime();
+    const svgElement = (universeSvgRef.current as unknown as SVGElement | undefined)
 
-            return (
-              <Electron
-                key={`electron-${electronKey}`}
-                pathDefinitionId={electronDefinitionId}
-                rotationAngle={rotationAngle}
-                orbitTime={electronOrbitTime}
-                size={electronSize}
-                spacetimeOffset={randomSpacetimeShift + electronIndex * (electronOrbitTime / (electronCount))}
-                color={electronColorPalette[(pathIndex * electronsPerPath + electronIndex + colorOffset) % electronColorPalette.length] ?? '#000'} />
-            )
+    if (svgElement) {
+      const viewBoxPaddingPercent = 0.2;
+      const bodyBoundaries = universe.getBodyBoundaries();
+      const viewBoxPadding = viewBoxPaddingPercent * Math.max(
+        ...bodyBoundaries.x.map(Math.abs), ...bodyBoundaries.y.map(Math.abs)
+      );
+      const containingViewBox = {
+        minX: bodyBoundaries.x[0] - viewBoxPadding,
+        minY: bodyBoundaries.y[0] - viewBoxPadding,
+        width: bodyBoundaries.x[1] - bodyBoundaries.x[0] + viewBoxPadding * 2,
+        height: bodyBoundaries.y[1] - bodyBoundaries.y[0] + viewBoxPadding * 2
+      };
+      svgElement.setAttribute('viewBox', `${containingViewBox.minX}, ${containingViewBox.minY}, ${containingViewBox.width}, ${containingViewBox.height}`)
+
+      universe.bodies.forEach((body, bodyIndex) => {
+        svgElement.querySelectorAll(`#body-circle-${bodyIndex} circle`)
+          .forEach((circle) => {
+            circle.setAttribute('cx', body.position.x.toString())
+            circle.setAttribute('cy', body.position.y.toString())
           })
-      })}
-    </svg>
+
+        body.pastPositions.forEach((position, tailIndex) => {
+          const tailCircle = svgElement.querySelector(`#tail-circle-${bodyIndex}-${tailIndex}`)
+          tailCircle?.setAttribute('r', (0.02 - 0.02 * (tailIndex / (body.pastPositions.length - 1))).toFixed(3))
+          tailCircle?.setAttribute('cx', position.x.toString())
+          tailCircle?.setAttribute('cy', position.y.toString())
+        })
+      })
+    }
+    timeout = setTimeout(moveBodies, 1);
+  }
+
+  React.useEffect(() => {
+    moveBodies()
+
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [])
+
+  const longestTailLength = Math.max(...universe.bodies.map(({ tailLength }) => tailLength));
+
+  return (
+    <>
+      <svg
+        // @ts-expect-error nope
+        ref={universeSvgRef}
+        xmlns="http://www.w3.org/2000/svg"
+        width={1200}
+        height={800}
+        viewBox="-5 -5 10 10"
+        style={{ background: '#000' }}
+      >
+        <defs>
+          {universe.bodies.map((_, bodyIndex) => (
+            <filter
+              key={`body-shadow-${bodyIndex}`}
+              id={`body-shadow-${bodyIndex}`}
+            >
+              <feGaussianBlur stdDeviation="0.2" />
+            </filter>
+          ))}
+        </defs>
+        {
+          Array.from({ length: longestTailLength })
+            .map((_, tailIndex) => {
+              const reverseTailIndex = longestTailLength - 1 - tailIndex
+              return (
+                universe.bodies.map((body, bodyIndex) => (
+                  <circle
+                    key={`tail-circle-${bodyIndex}-${reverseTailIndex}`}
+                    id={`tail-circle-${bodyIndex}-${reverseTailIndex}`}
+                    fill={body.color}
+                    r={0}
+                    cx={0}
+                    cy={0} />
+                )))
+            })
+        }
+        {universe.bodies.map((body, bodyIndex) => (
+          <g
+            id={`body-circle-${bodyIndex}`}
+            key={`body-circle-${bodyIndex}`}
+          >
+            <circle
+              fill={body.color}
+              r={body.radius}
+              opacity={0.05}
+              cx={body.position.x}
+              cy={body.position.y}
+              style={{
+                filter: `url(#${`body-shadow-${bodyIndex}`})`
+              }}
+            />
+            <circle
+              fill={body.color}
+              r={body.radius}
+              cx={body.position.x}
+              cy={body.position.y}
+            />
+          </g>
+        ))}
+      </svg >
+    </>
   )
 }
 
