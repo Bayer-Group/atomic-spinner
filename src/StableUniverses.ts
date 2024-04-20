@@ -59,21 +59,21 @@ export const Random = new Universe({
       maxVelocity: maxVelocityForRandom,
       position: new Vector(getRandom(), getRandom(), 0),
       velocity: new Vector(getRandom(), getRandom(), 0).scaleTo(getRandom() * 0.001),
-      color: '#3d9900'
+      color: 'rgb(28, 203, 210)'
     }),
     new Body({
       mass: 1000000,
       maxVelocity: maxVelocityForRandom,
       position: new Vector(getRandom(), getRandom(), 0),
       velocity: new Vector(getRandom(), getRandom(), 0).scaleTo(getRandom() * 0.001),
-      color: '#00314e'
+      color: 'rgb(0, 102, 128)'
     }),
     new Body({
       mass: 1000000,
       maxVelocity: maxVelocityForRandom,
       position: new Vector(getRandom(), getRandom(), 0),
       velocity: new Vector(getRandom(), getRandom(), 0).scaleTo(getRandom() * 0.001),
-      color: '#008ebd'
+      color: '#777'
     })
   ]
 });
