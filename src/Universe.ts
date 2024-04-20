@@ -59,7 +59,7 @@ export default class Universe {
       if (index1 !== index2) {
         const distanceBetweenBodies = body2.position.distance(body1.position)
         if (distanceBetweenBodies < body1.radius + body2.radius) {
-          body2.position.sum(body2.position.diff(body1.position).scaleTo(body1.radius + body2.radius))
+          body2.position = body1.position.sum(body1.position.unitDirection(body2.position).scaleTo((body1.radius + body2.radius)))
 
           const collisionVelocity1 = body1.velocity.projection(body1.position.unitDirection(body2.position))
           const collisionVelocity2 = body2.velocity.projection(body2.position.unitDirection(body1.position))
@@ -74,8 +74,8 @@ export default class Universe {
             + ((2 * body2.mass) / (body1.mass + body2.mass)) * preCollisionSpeed2
           const postCollisionSpeed2 = -1 * (preCollisionSpeed1 + postCollisionSpeed1 - preCollisionSpeed2)
 
-          body1.velocity = parallelVelocity1.sum(collisionVelocity1.scaleTo(postCollisionSpeed1 * 1.05))
-          body2.velocity = parallelVelocity2.sum(collisionVelocity2.scaleTo(postCollisionSpeed2 * 1.05))
+          body1.velocity = parallelVelocity1.sum(collisionVelocity1.scaleTo(postCollisionSpeed1))
+          body2.velocity = parallelVelocity2.sum(collisionVelocity2.scaleTo(postCollisionSpeed2))
         }
       }
     })
