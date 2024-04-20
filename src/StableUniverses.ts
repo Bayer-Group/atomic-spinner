@@ -75,7 +75,7 @@ export const Random = new Universe({
       velocity: new Vector(getRandom(), getRandom(), 0).scaleTo(getRandom() * 0.001),
       color: '#008ebd'
     })
-  ]
+  ], collisions: true
 });
 
 export const FigureEight = new Universe({

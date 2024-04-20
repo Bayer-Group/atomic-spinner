@@ -76,7 +76,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
       const centerOfMass = universe.getCenterOfMass();
       const bodyBoundaries = universe.getBodyBoundaries();
 
-      const viewBoxPaddingPercent = 1.2;
+      const viewBoxPaddingPercent = 1.4;
       const bodiesWidth = bodyBoundaries.x[1] - bodyBoundaries.x[0]
       const bodiesHeight = bodyBoundaries.y[1] - bodyBoundaries.y[0]
       const viewBoxSize = universe.fixedViewPortSize ?? Math.max(
@@ -128,9 +128,8 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
         // @ts-expect-error nope
         ref={universeSvgRef}
         xmlns="http://www.w3.org/2000/svg"
-        width={1200}
+        width={800}
         height={800}
-        style={{ background: '#000' }}
       >
         <defs>
           {universe.bodies.map((_, bodyIndex) => (
@@ -174,8 +173,6 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
               }}
             />
             <circle
-              stroke="#000"
-              strokeWidth={body.radius * 0.05}
               fill={body.color}
               r={body.radius}
               cx={body.position.x}
