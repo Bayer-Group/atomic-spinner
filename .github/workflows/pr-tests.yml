@@ -22,7 +22,7 @@ jobs:
     - run: pnpm test
     - name: Save Cypress Output
       if: ${{ failure() }}
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cypress-output
         path: |
