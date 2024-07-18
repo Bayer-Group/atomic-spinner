@@ -13,8 +13,6 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.4",
     "@types/node": "^20.6.0",
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
     "@types/react-helmet": "^6.1.6",
     "atomic-spinner": "workspace:*",
     "prop-types": "^15.8.1",
@@ -44,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0"
   }
 }
