@@ -12,7 +12,7 @@
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/jest": "^29.5.4",
-    "@types/node": "^20.6.0",
+    "@types/node": "^22.0.2",
     "@types/react-helmet": "^6.1.6",
     "atomic-spinner": "workspace:*",
     "prop-types": "^15.8.1",
