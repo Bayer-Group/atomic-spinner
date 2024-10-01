@@ -137,7 +137,7 @@ function App(): JSX.Element {
           <DarkModeToggle />
         </Grid>
         <Grid container>
-          <Grid xs={12} display="flex" sx={{ minHeight: `${atomSize}px`, padding: 0 }} justifyContent="center">
+          <Grid size={{ xs: 12 }} display="flex" sx={{ minHeight: `${atomSize}px`, padding: 0 }} justifyContent="center">
             {showAtomicSpinner && (
               <AtomicSpinner
                 atomSize={atomSize}
@@ -162,7 +162,7 @@ function App(): JSX.Element {
               />
             )}
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Atom Size</Typography>
               <Slider
@@ -175,7 +175,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Display Electron Paths</Typography>
               <Switch
@@ -184,7 +184,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Display Nucleus</Typography>
               <Switch
@@ -193,7 +193,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Electron Path Count</Typography>
               <Slider
@@ -206,7 +206,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Electron Path Width</Typography>
               <Slider
@@ -219,7 +219,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Electrons Per Path</Typography>
               <Slider
@@ -232,7 +232,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Electron Size</Typography>
               <Slider
@@ -245,7 +245,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Electron Speed</Typography>
               <Slider
@@ -258,7 +258,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particle Border Width</Typography>
               <Slider
@@ -271,7 +271,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Layer Count</Typography>
               <Slider
@@ -284,7 +284,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particles Per Layer</Typography>
               <Slider
@@ -297,7 +297,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particle Size</Typography>
               <Slider
@@ -310,7 +310,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Distance From Center</Typography>
               <Slider
@@ -323,7 +323,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Speed</Typography>
               <Slider
@@ -336,7 +336,7 @@ function App(): JSX.Element {
               />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={2}>
+          <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Mask Overlap</Typography>
               <Switch
@@ -347,7 +347,7 @@ function App(): JSX.Element {
           </Grid>
         </Grid>
         <Grid container>
-          <Grid xs={12} lg={3}>
+          <Grid size={{ xs: 12, lg: 3 }}>
             <SettingsBox>
               <Typography gutterBottom>Electron Color Palette</Typography>
               <HexColorPicker style={{ margin: '15px auto' }} color={electronNewColor} onChange={setElectronNewColor} />
@@ -365,21 +365,21 @@ function App(): JSX.Element {
               )}
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={3}>
+          <Grid size={{ xs: 12, lg: 3 }}>
             <SettingsBox>
               <Typography gutterBottom>Electron Path Color</Typography>
               <HexColorPicker style={{ margin: '15px auto' }} color={electronPathColor} onChange={setElectronPathColor} />
               <HexColorInput alpha color={electronPathColor} onChange={setElectronPathColor} />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={3}>
+          <Grid size={{ xs: 12, lg: 3 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particle Fill Color</Typography>
               <HexColorPicker style={{ margin: '15px auto' }} color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
               <HexColorInput alpha color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
             </SettingsBox>
           </Grid>
-          <Grid xs={12} lg={3}>
+          <Grid size={{ xs: 12, lg: 3 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particle Border Color</Typography>
               <HexColorPicker style={{ margin: '15px auto' }} color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
