@@ -46,7 +46,7 @@
     "react-dom": ">=17.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@types/node": "^22.0.2",
     "@types/prop-types": "^15.7.5",
