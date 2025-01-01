@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.1",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/node": "^22.0.2",
     "@types/prop-types": "^15.7.5",
     "@types/react": "^18.3.3",
