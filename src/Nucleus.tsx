@@ -72,7 +72,7 @@ const NucleusLayer = ({
   )
 }
 
-const Nucleus = (props: NucleusProps): JSX.Element => {
+const Nucleus = (props: NucleusProps): React.JSX.Element => {
   const angleIncrement = props.particlesPerLayer % 2 === 0
     ? Math.PI / 2 / Math.max(1, (props.layerCount - 1))
     : Math.PI / Math.max(1, (props.layerCount - 1))

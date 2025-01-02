@@ -1,5 +1,4 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
 
 import ElectronPath from './ElectronPath'
 import Electron from './Electron'
@@ -118,28 +117,6 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
       })}
     </svg>
   )
-}
-
-AtomicSpinner.propTypes = {
-  atomSize: PropTypes.number,
-  displayElectronPaths: PropTypes.bool,
-  displayNucleus: PropTypes.bool,
-  electronColorPalette: PropTypes.arrayOf(PropTypes.string.isRequired),
-  electronPathCount: PropTypes.number,
-  electronPathColor: PropTypes.string,
-  electronPathWidth: PropTypes.number,
-  electronsPerPath: PropTypes.number,
-  electronSize: PropTypes.number,
-  electronSpeed: PropTypes.number,
-  nucleusDistanceFromCenter: PropTypes.number,
-  nucleusLayerCount: PropTypes.number,
-  nucleusParticlesPerLayer: PropTypes.number,
-  nucleusParticleFillColor: PropTypes.string,
-  nucleusParticleBorderColor: PropTypes.string,
-  nucleusParticleBorderWidth: PropTypes.number,
-  nucleusParticleSize: PropTypes.number,
-  nucleusSpeed: PropTypes.number,
-  nucleusMaskOverlap: PropTypes.bool
 }
 
 export default AtomicSpinner
