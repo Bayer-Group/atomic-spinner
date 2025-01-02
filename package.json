@@ -9,7 +9,7 @@
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
   "engines": {
-    "node": ">=14"
+    "node": ">=22"
   },
   "scripts": {
     "clean": "rm -rf lib",
@@ -19,7 +19,7 @@
     "start-demo": "pnpm --prefix demo start",
     "build-demo": "pnpm --prefix demo build",
     "deploy-demo": "pnpm build-demo && gh-pages -d demo/build",
-    "lint": "eslint --ext .ts,.tsx . && pnpm --prefix demo lint",
+    "lint": "eslint .",
     "test": "pnpm cypress run --component",
     "test-interactive": "pnpm cypress open"
   },
@@ -38,41 +38,34 @@
   "files": [
     "/lib"
   ],
-  "dependencies": {
-    "prop-types": "^15.8.1"
-  },
   "peerDependencies": {
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^28.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.1",
-    "@types/node": "^22.0.2",
-    "@types/prop-types": "^15.7.5",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@types/webpack": "^5.28.2",
-    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@eslint/js": "^9.17.0",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@types/node": "^22.10.3",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@types/webpack": "^5.28.5",
+    "@typescript-eslint/eslint-plugin": "^8.19.0",
     "compression-webpack-plugin": "^11.1.0",
-    "cypress": "^13.2.0",
-    "eslint": "^8.49.0",
-    "eslint-config-standard-with-typescript": "^43.0.1",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-n": "^16.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.2",
-    "gh-pages": "^6.0.0",
-    "postcss": "^8.4.29",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^4.18.1",
+    "cypress": "^13.17.0",
+    "eslint": "^9.17.0",
+    "gh-pages": "^6.2.0",
+    "postcss": "^8.4.49",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rollup": "^4.29.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-typescript2": "^0.36.0",
-    "ts-loader": "^9.4.4",
-    "ts-node": "^10.9.1",
-    "tslib": "^2.6.2",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2"
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.19.0",
+    "webpack": "^5.97.1"
   }
 }
