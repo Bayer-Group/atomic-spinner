@@ -1,0 +1,29 @@
+name: Run Tests
+
+inputs:
+  node-version:
+    required: true
+    type: string
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+    - run: npm i -g pnpm
+    - run: pnpm i --ignore-scripts
+    - run: pnpm cypress:install
+    - run: pnpm lint
+    - run: pnpm test
+    - name: Save Cypress output on failure
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: cypress-output
+        path: |
+          cypress/screenshots/
+          cypress/videos/
+          cypress/downloads/
+        retention-days: 7

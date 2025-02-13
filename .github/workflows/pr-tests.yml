@@ -12,6 +12,6 @@ jobs:
         node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-      - uses: ./.github/workflows/run-tests.yml
+      - uses: ./.github/actions/run-tests
         with:
           node-version: ${{ matrix.node-version }}
