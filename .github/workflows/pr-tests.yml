@@ -2,32 +2,15 @@ name: PR Tests
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
 
 jobs:
-  tests:
+  run-tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [22.x]
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm i -g pnpm
-    - run: pnpm i --ignore-scripts
-    - run: pnpm cypress:install
-    - run: pnpm lint
-    - run: pnpm test
-    - name: Save Cypress Output
-      if: ${{ failure() }}
-      uses: actions/upload-artifact@v4
-      with:
-        name: cypress-output
-        path: |
-          cypress/screenshots/
-          cypress/videos/
-          cypress/downloads/
-        retention-days: 7
+      - uses: ./.github/workflows/run-tests.yml
+        with:
+          node-version: ${{ matrix.node-version }}

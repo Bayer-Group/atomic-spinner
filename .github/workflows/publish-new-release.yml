@@ -5,24 +5,32 @@ on:
     types: [created]
 
 jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x]
+    steps:
+      - uses: ./.github/workflows/run-tests.yml
+        with:
+          node-version: ${{ matrix.node-version }}
+
   publish-npm:
+    needs: run-tests
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org/
       - run: sudo apt-get install jq
       - run: jq ".version=\"${GITHUB_REF#refs/*/}\"" package.json > package-new.json && mv package-new.json package.json
       - run: cat package.json
-      - run: npm i -g pnpm
-      - run: pnpm i
-      - run: pnpm test
+      - run: pnpm i --ignore-scripts
       - run: pnpm publish-npm
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
@@ -35,8 +43,7 @@ jobs:
         node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i -g pnpm
