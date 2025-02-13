@@ -13,10 +13,15 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
     - run: npm i -g pnpm
+      shell: bash
     - run: pnpm i --ignore-scripts
+      shell: bash
     - run: pnpm cypress:install
+      shell: bash
     - run: pnpm lint
+      shell: bash
     - run: pnpm test
+      shell: bash
     - name: Save Cypress output on failure
       if: ${{ failure() }}
       uses: actions/upload-artifact@v4
