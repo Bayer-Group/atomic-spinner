@@ -32,7 +32,7 @@ jobs:
       - run: jq ".version=\"${GITHUB_REF#refs/*/}\"" package.json > package-new.json && mv package-new.json package.json
       - run: cat package.json
       - run: npm i -g pnpm
-      - run: pnpm i --ignore-scripts
+      - run: pnpm i
       - run: pnpm publish-npm
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
@@ -49,7 +49,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i -g pnpm
-      - run: pnpm i --ignore-scripts
+      - run: pnpm i
       - run: pnpm --prefix demo i
       - run: pnpm --prefix demo i atomic-spinner@latest
       - name: Set Github identity
