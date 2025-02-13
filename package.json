@@ -20,6 +20,7 @@
     "build-demo": "pnpm --prefix demo build",
     "deploy-demo": "pnpm build-demo && gh-pages -d demo/build",
     "lint": "eslint .",
+    "cypress:install": "cypress install",
     "test": "pnpm cypress run --component",
     "test-interactive": "pnpm cypress open"
   },

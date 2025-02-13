@@ -17,7 +17,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm i -g pnpm
-    - run: pnpm i
+    - run: pnpm i --ignore-scripts
+    - run: pnpm cypress:install
     - run: pnpm lint
     - run: pnpm test
     - name: Save Cypress Output
