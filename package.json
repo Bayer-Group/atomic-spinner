@@ -18,7 +18,7 @@
     "publish-npm": "pnpm clean && pnpm build && npm publish",
     "start-demo": "pnpm --prefix demo start",
     "build-demo": "pnpm --prefix demo build",
-    "deploy-demo": "pnpm build-demo && gh-pages -d demo/build",
+    "deploy-demo": "pnpm build-demo && gh-pages -d demo/build -u 'github-actions-bot <support+actions@github.com>'",
     "lint": "eslint .",
     "cypress:install": "cypress install",
     "test": "pnpm cypress run --component",
