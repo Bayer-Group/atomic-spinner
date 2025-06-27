@@ -6,7 +6,7 @@ import {
   Slider,
   Typography,
   Switch,
-  Grid2 as Grid
+  Grid
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { HexColorPicker, HexColorInput } from 'react-colorful'
