@@ -39,8 +39,6 @@ jobs:
       - run: npm i -g pnpm
       - run: pnpm i
       - run: pnpm publish-npm
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
 
   deploy-demo:
     needs: publish-npm
