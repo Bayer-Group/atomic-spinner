@@ -10,8 +10,8 @@ Customizable React loading spinner that looks like an [atom](https://en.wikipedi
 https://bayer-group.github.io/atomic-spinner/
 
 ## Examples
-![example-atom-1](https://user-images.githubusercontent.com/8313853/210661410-c2d977d8-426c-438f-b24b-cdbfc4b506f4.svg)
-![example-atom-2](https://user-images.githubusercontent.com/8313853/210662408-6d3eed7e-44ca-4bdd-b190-d9fba865c1a9.svg)
+![example-atom-1](https://raw.githubusercontent.com/Bayer-Group/atomic-spinner/main/demo/public/example-atom-1.svg)
+![example-atom-2](https://raw.githubusercontent.com/Bayer-Group/atomic-spinner/main/demo/public/example-atom-2.svg)
 
 ## Installation
 

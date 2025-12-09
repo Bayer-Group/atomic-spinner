@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200"
+  height="200" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+  <defs>
+    <path id="electronPath" d="M50 15A15 35 0 0 1 50 85A15 35 0 0 1 50 15" fill="none"></path>
+    <path id="electron" d="M0 0A15 35 0 0 1 0 70A15 35 0 0 1 0 0" fill="none"></path>
+  </defs>
+  <g data-testid="electron" transform="rotate(0 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.582828807959216s" repeatCount="indefinite" begin="-7.490296939005828s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(5 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.585876202482647s" repeatCount="indefinite" begin="-9.987087955216527s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(10 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.705391729416437s" repeatCount="indefinite" begin="-11.318447825378172s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(15 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.211798321148395s" repeatCount="indefinite" begin="-9.113696360150703s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(20 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.546532754446531s" repeatCount="indefinite" begin="-7.149802288238195s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(25 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.0123225147657955s" repeatCount="indefinite" begin="-6.284876596882467s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(30 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.783408433321167s" repeatCount="indefinite" begin="-9.866666796844019s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(35 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.806532624094729s" repeatCount="indefinite" begin="-9.4671174308954s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(40 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.646608905629723s" repeatCount="indefinite" begin="-9.600459594045933s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(45 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.451435815720719s" repeatCount="indefinite" begin="-9.655528106939517s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(50 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.212038068786753s" repeatCount="indefinite" begin="-8.967827035419456s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(55 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.15618964571145s" repeatCount="indefinite" begin="-9.161131161769598s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(60 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.904597516243599s" repeatCount="indefinite" begin="-11.224889606044602s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(65 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.585092822860106s" repeatCount="indefinite" begin="-10.57609133355064s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(70 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.897125553312743s" repeatCount="indefinite" begin="-11.52104302372219s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(75 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.840422469786892s" repeatCount="indefinite" begin="-10.92818393460454s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(80 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.833516586540376s" repeatCount="indefinite" begin="-7.3975155062918825s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(85 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.437853270362421s" repeatCount="indefinite" begin="-8.771726863187892s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(90 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.343702310017735s" repeatCount="indefinite" begin="-5.892981305806886s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(95 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.0769524818038185s" repeatCount="indefinite" begin="-8.48891546807623s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(100 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.694834108317879s" repeatCount="indefinite" begin="-6.759231708228472s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(105 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.087915147105888s" repeatCount="indefinite" begin="-5.4650332022794466s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(110 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.6350042847603365s" repeatCount="indefinite" begin="-6.881497415316332s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(115 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.526299261818914s" repeatCount="indefinite" begin="-7.684353290594823s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(120 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.38293829850594s" repeatCount="indefinite" begin="-6.5501731417462885s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(125 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.681694065308422s" repeatCount="indefinite" begin="-8.473595349602258s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(130 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.276793544326504s" repeatCount="indefinite" begin="-9.009807837056613s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(135 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.149490214005653s" repeatCount="indefinite" begin="-7.6601627633523375s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(140 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.6760865214950895s" repeatCount="indefinite" begin="-6.384917200734688s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(145 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.423173773578386s" repeatCount="indefinite" begin="-9.681243371610638s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(150 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.202705257872374s" repeatCount="indefinite" begin="-9.564085266658216s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(155 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.240232156034077s" repeatCount="indefinite" begin="-8.92054981906174s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(160 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.751168704983172s" repeatCount="indefinite" begin="-7.877830910523518s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(165 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#05386B">
+      <animateMotion dur="5.163028696812122s" repeatCount="indefinite" begin="-8.870251210665257s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(170 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FF6B6B">
+      <animateMotion dur="5.45975215558893s" repeatCount="indefinite" begin="-7.360230859716641s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+  <g data-testid="electron" transform="rotate(175 50 50)">
+    <circle cx="50" cy="15" r="0.8999999999999999" fill="#FFE66D">
+      <animateMotion dur="5.640112519177205s" repeatCount="indefinite" begin="-9.112393287473024s">
+        <mpath href="#electron"></mpath>
+      </animateMotion>
+    </circle>
+  </g>
+</svg>
