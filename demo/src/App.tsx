@@ -1,4 +1,5 @@
-import AtomicSpinner from 'atomic-spinner'
+import React, { JSX, useCallback, useState } from 'react'
+import AtomicSpinner, { defaultProps } from 'atomic-spinner'
 import {
   Box,
   Chip,
@@ -10,31 +11,30 @@ import {
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { HexAlphaColorPicker, HexColorInput } from 'react-colorful'
-import React, { JSX, useCallback, useState } from 'react'
 import SettingsBox from './SettingsBox'
 import DarkModeToggle from './DarkModeToggle'
 
 function App(): JSX.Element {
-  const [atomSize, setAtomSize] = useState(300)
-  const [displayElectronPaths, setDisplayElectronPaths] = useState(true)
-  const [displayNucleus, setDisplayNucleus] = useState(true)
-  const [electronPathColor, setElectronPathColor] = useState('#99999944')
-  const [electronPathCount, setElectronPathCount] = useState(3)
-  const [electronPathWidth, setElectronPathWidth] = useState(0.5)
-  const [electronsPerPath, setElectronsPerPath] = useState(2)
-  const [electronSize, setElectronSize] = useState(1.5)
-  const [electronSpeed, setElectronSpeed] = useState(0.5)
+  const [atomSize, setAtomSize] = useState(defaultProps.atomSize)
+  const [displayElectronPaths, setDisplayElectronPaths] = useState(defaultProps.displayElectronPaths)
+  const [displayNucleus, setDisplayNucleus] = useState(defaultProps.displayNucleus)
+  const [electronPathColor, setElectronPathColor] = useState(defaultProps.electronPathColor)
+  const [electronPathCount, setElectronPathCount] = useState(defaultProps.electronPathCount)
+  const [electronPathWidth, setElectronPathWidth] = useState(defaultProps.electronPathWidth)
+  const [electronsPerPath, setElectronsPerPath] = useState(defaultProps.electronsPerPath)
+  const [electronSize, setElectronSize] = useState(defaultProps.electronSize)
+  const [electronSpeed, setElectronSpeed] = useState(defaultProps.electronSpeed)
   const [electronNewColor, setElectronNewColor] = useState('#ffffff')
-  const [electronColorPalette, setElectronColorPalette] = useState(['#FF6B6B', '#FFE66D', '#05386B'])
-  const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState('#99999922')
-  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#99999966')
-  const [nucleusParticleBorderWidth, setNucleusParticleBorderWidth] = useState(0.3)
-  const [nucleusLayerCount, setNucleusLayerCount] = useState(1)
-  const [nucleusParticlesPerLayer, setNucleusParticlesPerLayer] = useState(3)
-  const [nucleusParticleSize, setNucleusParticleSize] = useState(2.5)
-  const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(4)
-  const [nucleusSpeed, setNucleusSpeed] = useState(2)
-  const [nucleusMaskOverlap, setNucleusMaskOverlap] = useState(true)
+  const [electronColorPalette, setElectronColorPalette] = useState(defaultProps.electronColorPalette)
+  const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState(defaultProps.nucleusParticleFillColor)
+  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState(defaultProps.nucleusParticleBorderColor)
+  const [nucleusParticleBorderWidth, setNucleusParticleBorderWidth] = useState(defaultProps.nucleusParticleBorderWidth)
+  const [nucleusLayerCount, setNucleusLayerCount] = useState(defaultProps.nucleusLayerCount)
+  const [nucleusParticlesPerLayer, setNucleusParticlesPerLayer] = useState(defaultProps.nucleusParticlesPerLayer)
+  const [nucleusParticleSize, setNucleusParticleSize] = useState(defaultProps.nucleusParticleSize)
+  const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(defaultProps.nucleusDistanceFromCenter)
+  const [nucleusSpeed, setNucleusSpeed] = useState(defaultProps.nucleusSpeed)
+  const [nucleusMaskOverlap, setNucleusMaskOverlap] = useState(defaultProps.nucleusMaskOverlap)
 
   const electronColorDeleteHandler = useCallback((electronColor: string) => () => {
     setElectronColorPalette(electronColorPalette.filter((color) => color !== electronColor))
