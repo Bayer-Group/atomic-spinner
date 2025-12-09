@@ -9,30 +9,30 @@ import {
   Grid
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
-import { HexColorPicker, HexColorInput } from 'react-colorful'
-import React, { JSX, useCallback, useEffect, useState } from 'react'
+import { HexAlphaColorPicker, HexColorInput } from 'react-colorful'
+import React, { JSX, useCallback, useState } from 'react'
 import SettingsBox from './SettingsBox'
 import DarkModeToggle from './DarkModeToggle'
 
 function App(): JSX.Element {
-  const [atomSize, setAtomSize] = useState(200)
+  const [atomSize, setAtomSize] = useState(300)
   const [displayElectronPaths, setDisplayElectronPaths] = useState(true)
   const [displayNucleus, setDisplayNucleus] = useState(true)
-  const [electronPathColor, setElectronPathColor] = useState('#707070')
+  const [electronPathColor, setElectronPathColor] = useState('#99999944')
   const [electronPathCount, setElectronPathCount] = useState(3)
   const [electronPathWidth, setElectronPathWidth] = useState(0.5)
   const [electronsPerPath, setElectronsPerPath] = useState(2)
   const [electronSize, setElectronSize] = useState(1.5)
   const [electronSpeed, setElectronSpeed] = useState(0.5)
-  const [electronNewColor, setElectronNewColor] = useState('#86E5FF')
-  const [electronColorPalette, setElectronColorPalette] = useState(['#0081C9', '#5BC0F8', '#86E5FF'])
-  const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState('#707070')
-  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#999999')
+  const [electronNewColor, setElectronNewColor] = useState('#ffffff')
+  const [electronColorPalette, setElectronColorPalette] = useState(['#FF6B6B', '#FFE66D', '#05386B'])
+  const [nucleusParticleFillColor, setNucleusParticleFillColor] = useState('#99999922')
+  const [nucleusParticleBorderColor, setNucleusParticleBorderColor] = useState('#99999966')
   const [nucleusParticleBorderWidth, setNucleusParticleBorderWidth] = useState(0.3)
   const [nucleusLayerCount, setNucleusLayerCount] = useState(2)
   const [nucleusParticlesPerLayer, setNucleusParticlesPerLayer] = useState(3)
-  const [nucleusParticleSize, setNucleusParticleSize] = useState(2.5)
-  const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(2.5)
+  const [nucleusParticleSize, setNucleusParticleSize] = useState(2)
+  const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(3)
   const [nucleusSpeed, setNucleusSpeed] = useState(2)
   const [nucleusMaskOverlap, setNucleusMaskOverlap] = useState(true)
 
@@ -104,32 +104,6 @@ function App(): JSX.Element {
     setNucleusMaskOverlap(event.target.checked)
   }, [])
 
-  const [showAtomicSpinner, setShowAtomicSpinner] = useState(true)
-
-  useEffect(() => {
-    setShowAtomicSpinner(false)
-    setTimeout(() => { setShowAtomicSpinner(true) }, 1)
-  }, [
-    atomSize,
-    displayElectronPaths,
-    displayNucleus,
-    electronColorPalette,
-    electronPathCount,
-    electronPathColor,
-    electronPathWidth,
-    electronsPerPath,
-    electronSize,
-    electronSpeed,
-    nucleusLayerCount,
-    nucleusParticlesPerLayer,
-    nucleusParticleFillColor,
-    nucleusParticleBorderColor,
-    nucleusParticleBorderWidth,
-    nucleusParticleSize,
-    nucleusDistanceFromCenter,
-    nucleusSpeed
-  ])
-
   return (
     <Box sx={{ flexGrow: 1, padding: 5 }}>
       <Grid container spacing={2} justifyContent="center">
@@ -138,29 +112,27 @@ function App(): JSX.Element {
         </Grid>
         <Grid container size={{ xs: 12 }}>
           <Grid size={{ xs: 12 }} display="flex" sx={{ minHeight: `${atomSize}px`, padding: 0 }} justifyContent="center">
-            {showAtomicSpinner && (
-              <AtomicSpinner
-                atomSize={atomSize}
-                displayElectronPaths={displayElectronPaths}
-                displayNucleus={displayNucleus}
-                electronColorPalette={electronColorPalette}
-                electronPathCount={electronPathCount}
-                electronPathColor={electronPathColor}
-                electronPathWidth={electronPathWidth}
-                electronsPerPath={electronsPerPath}
-                electronSize={electronSize}
-                electronSpeed={electronSpeed}
-                nucleusLayerCount={nucleusLayerCount}
-                nucleusParticlesPerLayer={nucleusParticlesPerLayer}
-                nucleusParticleFillColor={nucleusParticleFillColor}
-                nucleusParticleBorderColor={nucleusParticleBorderColor}
-                nucleusParticleBorderWidth={nucleusParticleBorderWidth}
-                nucleusParticleSize={nucleusParticleSize}
-                nucleusDistanceFromCenter={nucleusDistanceFromCenter}
-                nucleusSpeed={nucleusSpeed}
-                nucleusMaskOverlap={nucleusMaskOverlap}
-              />
-            )}
+            <AtomicSpinner
+              atomSize={atomSize}
+              displayElectronPaths={displayElectronPaths}
+              displayNucleus={displayNucleus}
+              electronColorPalette={electronColorPalette}
+              electronPathCount={electronPathCount}
+              electronPathColor={electronPathColor}
+              electronPathWidth={electronPathWidth}
+              electronsPerPath={electronsPerPath}
+              electronSize={electronSize}
+              electronSpeed={electronSpeed}
+              nucleusLayerCount={nucleusLayerCount}
+              nucleusParticlesPerLayer={nucleusParticlesPerLayer}
+              nucleusParticleFillColor={nucleusParticleFillColor}
+              nucleusParticleBorderColor={nucleusParticleBorderColor}
+              nucleusParticleBorderWidth={nucleusParticleBorderWidth}
+              nucleusParticleSize={nucleusParticleSize}
+              nucleusDistanceFromCenter={nucleusDistanceFromCenter}
+              nucleusSpeed={nucleusSpeed}
+              nucleusMaskOverlap={nucleusMaskOverlap}
+            />
           </Grid>
           <Grid size={{ xs: 12, lg: 2 }}>
             <SettingsBox>
@@ -350,7 +322,7 @@ function App(): JSX.Element {
           <Grid size={{ xs: 12, lg: 3 }}>
             <SettingsBox>
               <Typography gutterBottom>Electron Color Palette</Typography>
-              <HexColorPicker style={{ margin: '15px auto' }} color={electronNewColor} onChange={setElectronNewColor} />
+              <HexAlphaColorPicker style={{ margin: '15px auto' }} color={electronNewColor} onChange={setElectronNewColor} />
               <HexColorInput alpha color={electronNewColor} onChange={setElectronNewColor} />
               <IconButton aria-label="add" color="primary" onClick={electronColorAddHandler}>
                 <AddIcon />
@@ -368,21 +340,21 @@ function App(): JSX.Element {
           <Grid size={{ xs: 12, lg: 3 }}>
             <SettingsBox>
               <Typography gutterBottom>Electron Path Color</Typography>
-              <HexColorPicker style={{ margin: '15px auto' }} color={electronPathColor} onChange={setElectronPathColor} />
+              <HexAlphaColorPicker style={{ margin: '15px auto' }} color={electronPathColor} onChange={setElectronPathColor} />
               <HexColorInput alpha color={electronPathColor} onChange={setElectronPathColor} />
             </SettingsBox>
           </Grid>
           <Grid size={{ xs: 12, lg: 3 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particle Fill Color</Typography>
-              <HexColorPicker style={{ margin: '15px auto' }} color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
+              <HexAlphaColorPicker style={{ margin: '15px auto' }} color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
               <HexColorInput alpha color={nucleusParticleFillColor} onChange={setNucleusParticleFillColor} />
             </SettingsBox>
           </Grid>
           <Grid size={{ xs: 12, lg: 3 }}>
             <SettingsBox>
               <Typography gutterBottom>Nucleus Particle Border Color</Typography>
-              <HexColorPicker style={{ margin: '15px auto' }} color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
+              <HexAlphaColorPicker style={{ margin: '15px auto' }} color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
               <HexColorInput alpha color={nucleusParticleBorderColor} onChange={setNucleusParticleBorderColor} />
             </SettingsBox>
           </Grid>
