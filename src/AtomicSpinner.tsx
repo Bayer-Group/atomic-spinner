@@ -26,26 +26,48 @@ export interface AtomicSpinnerProps {
   nucleusMaskOverlap?: boolean
 }
 
+export const defaultProps: Required<AtomicSpinnerProps> = {
+  atomSize: 200,
+  displayElectronPaths: true,
+  displayNucleus: true,
+  electronColorPalette: ['#FF6B6B', '#FFE66D', '#05386B'],
+  electronPathCount: 3,
+  electronPathColor: '#99999944',
+  electronPathWidth: 0.5,
+  electronsPerPath: 2,
+  electronSize: 1.5,
+  electronSpeed: 0.5,
+  nucleusLayerCount: 1,
+  nucleusParticlesPerLayer: 3,
+  nucleusParticleFillColor: '#99999922',
+  nucleusParticleBorderColor: '#99999966',
+  nucleusParticleBorderWidth: 0.3,
+  nucleusParticleSize: 2.5,
+  nucleusDistanceFromCenter: 4,
+  nucleusSpeed: 2,
+  nucleusMaskOverlap: true
+};
+
 const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
-  atomSize = 200,
-  displayElectronPaths = true,
-  displayNucleus = true,
-  electronColorPalette = ['#0081C9', '#5BC0F8', '#86E5FF'],
-  electronPathCount = 3,
-  electronPathColor = '#707070',
-  electronPathWidth = 0.5,
-  electronsPerPath = 2,
-  electronSize = 1.5,
-  electronSpeed = 0.5,
-  nucleusLayerCount = 2,
-  nucleusParticlesPerLayer = 3,
-  nucleusParticleFillColor = '#707070',
-  nucleusParticleBorderColor = '#999999',
-  nucleusParticleBorderWidth = 0.3,
-  nucleusParticleSize = 2.5,
-  nucleusDistanceFromCenter = 2.5,
-  nucleusSpeed = 2,
-  nucleusMaskOverlap = true
+  atomSize = defaultProps.atomSize,
+  displayElectronPaths = defaultProps.displayElectronPaths,
+  displayNucleus = defaultProps.displayNucleus,
+  electronColorPalette = defaultProps.electronColorPalette,
+  electronPathCount = defaultProps.electronPathCount,
+  electronPathColor = defaultProps.electronPathColor,
+  electronPathWidth = defaultProps.electronPathWidth,
+  electronsPerPath = defaultProps.electronsPerPath,
+  electronSize = defaultProps.electronSize,
+  electronSpeed = defaultProps.electronSpeed,
+  nucleusLayerCount = defaultProps.nucleusLayerCount,
+  nucleusParticlesPerLayer = defaultProps.nucleusParticlesPerLayer,
+  nucleusParticleFillColor = defaultProps.nucleusParticleFillColor,
+  nucleusParticleBorderColor = defaultProps.nucleusParticleBorderColor,
+  nucleusParticleBorderWidth = defaultProps.nucleusParticleBorderWidth,
+  nucleusParticleSize = defaultProps.nucleusParticleSize,
+  nucleusDistanceFromCenter = defaultProps.nucleusDistanceFromCenter,
+  nucleusSpeed = defaultProps.nucleusSpeed,
+  nucleusMaskOverlap = defaultProps.nucleusMaskOverlap
 }: AtomicSpinnerProps) => {
   const electronPaths = Array.from({ length: electronPathCount })
     .map((_, i) => ({

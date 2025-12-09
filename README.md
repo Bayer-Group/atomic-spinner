@@ -34,27 +34,3 @@ const App = () => <AtomicSpinner />
 
 export default App
 ```
-
-## Options
-
-| prop | type | default |
-| ---- | ---- | ------- |
-| atomSize | number | 200 |
-| displayElectronPaths | bool | false |
-| displayNucleus | bool | false |
-| electronColorPalette | string[] | [ '#0081C9', '#5BC0F8', '#86E5FF' ] |
-| electronPathCount | number | 3 |
-| electronPathColor | string | #707070 |
-| electronPathWidth | number | 0.5 |
-| electronsPerPath | number | 2 |
-| electronSize | number | 1.5 |
-| electronSpeed | number | 0.5 |
-| nucleusDistanceFromCenter | number | 2.5 |
-| nucleusLayerCount | number | 2 |
-| nucleusParticlesPerLayer | number | 3 |
-| nucleusParticleFillColor | string | #707070 |
-| nucleusParticleBorderColor | string | #999999 |
-| nucleusParticleBorderWidth | number | 0.3 |
-| nucleusParticleSize | number | 2.5 |
-| nucleusSpeed | number | 2 |
-| nucleusMaskOverlap | bool | true |
