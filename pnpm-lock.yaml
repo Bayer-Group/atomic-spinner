@@ -93,13 +93,13 @@ importers:
         specifier: ^11.14.1
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react@19.2.1)
       '@mui/icons-material':
-        specifier: ^7.1.2
+        specifier: ^7.3.6
         version: 7.3.6(@mui/material@7.3.6(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1))(@types/react@19.2.7)(react@19.2.1)
       '@mui/material':
-        specifier: ^7.1.2
+        specifier: ^7.3.6
         version: 7.3.6(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react@19.2.1))(@types/react@19.2.7)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@testing-library/jest-dom':
-        specifier: ^6.6.3
+        specifier: ^6.9.1
         version: 6.9.1
       '@testing-library/react':
         specifier: ^16.3.0
@@ -111,7 +111,7 @@ importers:
         specifier: ^30.0.0
         version: 30.0.0
       '@types/node':
-        specifier: ^24.0.6
+        specifier: ^24.10.2
         version: 24.10.2
       '@types/react-helmet':
         specifier: ^6.1.11
@@ -120,13 +120,13 @@ importers:
         specifier: workspace:*
         version: link:..
       react:
-        specifier: ^19.1.0
+        specifier: ^19.2.1
         version: 19.2.1
       react-colorful:
         specifier: ^5.6.1
         version: 5.6.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react-dom:
-        specifier: ^19.1.0
+        specifier: ^19.2.1
         version: 19.2.1(react@19.2.1)
       react-helmet-async:
         specifier: ^2.0.5
@@ -135,17 +135,17 @@ importers:
         specifier: 5.0.1
         version: 5.0.1(@babel/plugin-syntax-flow@7.27.1(@babel/core@7.28.5))(@babel/plugin-transform-react-jsx@7.27.1(@babel/core@7.28.5))(@types/babel__core@7.20.5)(@types/webpack@5.28.5)(eslint@9.39.1(jiti@1.21.7))(react@19.2.1)(ts-node@10.9.2(@types/node@24.10.2)(typescript@5.9.3))(type-fest@0.21.3)(typescript@5.9.3)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.3
         version: 5.9.3
       web-vitals:
-        specifier: ^5.0.3
+        specifier: ^5.1.0
         version: 5.1.0
     devDependencies:
       '@types/react':
-        specifier: ^19.1.8
+        specifier: ^19.2.7
         version: 19.2.7
       '@types/react-dom':
-        specifier: ^19.1.6
+        specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.7)
 
 packages:
