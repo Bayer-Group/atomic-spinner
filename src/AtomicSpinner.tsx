@@ -89,7 +89,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
       {displayElectronPaths &&
         electronPaths.map(({ rotationAngle }) => (
           <ElectronPath
-            key={`electron-path-${rotationAngle}`}
+            key={`electron-path-${electronPaths.length}-${rotationAngle}`}
             pathDefinitionId={electronPathDefinitionId}
             color={electronPathColor}
             width={electronPathWidth}
@@ -105,7 +105,7 @@ const AtomicSpinner: React.FunctionComponent<AtomicSpinnerProps> = ({
 
             return (
               <Electron
-                key={`electron-${electronKey}`}
+                key={`electron-${electronPaths.length}-${electronKey}`}
                 pathDefinitionId={electronDefinitionId}
                 rotationAngle={rotationAngle}
                 orbitTime={electronOrbitTime}

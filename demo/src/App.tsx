@@ -31,7 +31,7 @@ function App(): JSX.Element {
   const [nucleusParticleBorderWidth, setNucleusParticleBorderWidth] = useState(0.3)
   const [nucleusLayerCount, setNucleusLayerCount] = useState(2)
   const [nucleusParticlesPerLayer, setNucleusParticlesPerLayer] = useState(3)
-  const [nucleusParticleSize, setNucleusParticleSize] = useState(2)
+  const [nucleusParticleSize, setNucleusParticleSize] = useState(1)
   const [nucleusDistanceFromCenter, setNucleusDistanceFromCenter] = useState(3)
   const [nucleusSpeed, setNucleusSpeed] = useState(2)
   const [nucleusMaskOverlap, setNucleusMaskOverlap] = useState(true)
