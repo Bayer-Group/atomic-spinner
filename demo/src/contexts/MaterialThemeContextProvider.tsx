@@ -1,10 +1,12 @@
 import React, { JSX, ReactNode } from 'react'
-import { createTheme, ThemeProvider } from '@mui/material'
+import { createTheme, ThemeProvider, useMediaQuery } from '@mui/material'
 
 export const ColorModeContext = React.createContext({ toggleColorMode: () => { } })
 
 const MaterialThemeContextProvider = ({ children }: { children: ReactNode }): JSX.Element => {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light')
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const [mode, setMode] = React.useState<'light' | 'dark'>(prefersDarkMode ? 'dark' : 'light')
+
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
