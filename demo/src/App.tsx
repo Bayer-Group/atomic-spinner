@@ -133,10 +133,10 @@ function App(): JSX.Element {
   return (
     <Box sx={{ flexGrow: 1, padding: 5 }}>
       <Grid container spacing={2} justifyContent="center">
-        <Grid container>
+        <Grid container size={{ xs: 12 }} justifyContent="center">
           <DarkModeToggle />
         </Grid>
-        <Grid container>
+        <Grid container size={{ xs: 12 }}>
           <Grid size={{ xs: 12 }} display="flex" sx={{ minHeight: `${atomSize}px`, padding: 0 }} justifyContent="center">
             {showAtomicSpinner && (
               <AtomicSpinner
