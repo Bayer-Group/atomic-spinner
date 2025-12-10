@@ -1,7 +1,7 @@
 import React, { JSX, ReactNode } from 'react'
 import { createTheme, ThemeProvider, useMediaQuery } from '@mui/material'
 
-export const ColorModeContext = React.createContext({ toggleColorMode: () => { } })
+export const ColorModeContext = React.createContext<{ mode: 'light' | 'dark', toggleColorMode: () => void }>({ mode: 'light', toggleColorMode: () => { } })
 
 const MaterialThemeContextProvider = ({ children }: { children: ReactNode }): JSX.Element => {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -9,11 +9,12 @@ const MaterialThemeContextProvider = ({ children }: { children: ReactNode }): JS
 
   const colorMode = React.useMemo(
     () => ({
+      mode,
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
       }
     }),
-    []
+    [mode]
   )
 
   const theme = React.useMemo(
