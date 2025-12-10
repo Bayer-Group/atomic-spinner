@@ -1,4 +1,4 @@
-import React, {JSX, useContext, useCallback } from 'react'
+import React, { JSX, useContext } from 'react'
 import { styled, Switch } from '@mui/material'
 import { ColorModeContext } from './contexts/MaterialThemeContextProvider'
 
@@ -52,12 +52,8 @@ const ColorModeToggle = styled(Switch)(({ theme }) => ({
 const DarkModeToggle = (): JSX.Element => {
   const colorMode = useContext(ColorModeContext)
 
-  const toggleCallback = useCallback(() => {
-    colorMode.toggleColorMode()
-  }, [colorMode])
-
   return (
-    <ColorModeToggle onChange={toggleCallback} />
+    <ColorModeToggle checked={colorMode.mode === 'dark'} onChange={() => colorMode.toggleColorMode()} />
   )
 }
 
