@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/atomic-spinner/static/js/main.c4443bdc.js",
+    "main.js": "/atomic-spinner/static/js/main.1a3dc9c7.js",
     "index.html": "/atomic-spinner/index.html",
-    "main.c4443bdc.js.map": "/atomic-spinner/static/js/main.c4443bdc.js.map"
+    "main.1a3dc9c7.js.map": "/atomic-spinner/static/js/main.1a3dc9c7.js.map"
   },
   "entrypoints": [
-    "static/js/main.c4443bdc.js"
+    "static/js/main.1a3dc9c7.js"
   ]
 }
