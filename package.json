@@ -13,15 +13,14 @@
   },
   "scripts": {
     "clean": "rm -rf lib",
-    "build": "rollup -c",
-    "build-watch": "rollup -c --watch",
+    "build": "vite build",
+    "build-watch": "vite build --watch",
     "publish-npm": "pnpm clean && pnpm build && npm publish",
     "start-demo": "pnpm --prefix demo start",
     "build-demo": "pnpm --prefix demo build",
     "lint": "eslint .",
-    "cypress:install": "cypress install",
-    "test": "pnpm cypress run --component",
-    "test-interactive": "pnpm cypress open"
+    "test": "pnpm cypress run --component --config-file cypress/config.ts",
+    "test-interactive": "pnpm cypress open --config-file cypress/config.ts"
   },
   "keywords": [
     "atomic",
@@ -44,29 +43,21 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
     "@types/node": "^24.10.9",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@types/webpack": "^5.28.5",
     "@typescript-eslint/eslint-plugin": "^8.55.0",
-    "compression-webpack-plugin": "^11.1.0",
+    "@vitejs/plugin-react": "^4.5.2",
     "cypress": "^15.10.0",
     "eslint": "^9.39.2",
     "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "rollup": "^4.57.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-typescript2": "^0.36.0",
-    "ts-loader": "^9.5.4",
     "ts-node": "^10.9.2",
-    "tslib": "^2.8.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.55.0",
-    "webpack": "^5.105.2",
-    "webpack-dev-server": "^5.2.3"
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4"
   }
 }

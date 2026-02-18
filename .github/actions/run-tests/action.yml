@@ -16,7 +16,7 @@ runs:
       shell: bash
     - run: pnpm i --ignore-scripts
       shell: bash
-    - run: pnpm cypress:install
+    - run: pnpm cypress install
       shell: bash
     - run: pnpm lint
       shell: bash
