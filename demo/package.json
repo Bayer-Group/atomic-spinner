@@ -24,7 +24,7 @@
     "web-vitals": "^5.1.0"
   },
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
