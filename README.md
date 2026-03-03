@@ -3,7 +3,7 @@
 [![Publish New Release](https://github.com/Bayer-Group/atomic-spinner/actions/workflows/publish-new-release.yml/badge.svg)](https://github.com/Bayer-Group/atomic-spinner/actions/workflows/publish-new-release.yml)
 
 # atomic-spinner
-Customizable React loading spinner that looks like an [atom](https://en.wikipedia.org/wiki/Atom)
+Customizable React loading spinner that looks like an [atom](https://grokipedia.com/page/Atom)
 
 ## Live Demo
 
