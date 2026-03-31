@@ -19,7 +19,7 @@
     "react": "^19.2.1",
     "react-colorful": "^5.6.1",
     "react-dom": "^19.2.1",
-    "react-helmet-async": "^2.0.5",
+    "react-helmet-async": "^3.0.0",
     "typescript": "^5.9.3",
     "web-vitals": "^5.1.0"
   },
