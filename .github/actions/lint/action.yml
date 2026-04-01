@@ -1,0 +1,15 @@
+name: Lint
+
+inputs:
+  node-version:
+    required: true
+    type: string
+
+runs:
+  using: composite
+  steps:
+    - uses: ./.github/actions/setup
+      with:
+        node-version: ${{ inputs.node-version }}
+    - run: pnpm lint
+      shell: bash

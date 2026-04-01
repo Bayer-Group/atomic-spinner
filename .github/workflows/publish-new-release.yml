@@ -9,51 +9,56 @@ permissions:
   pull-requests: write
   id-token: write
 
+env:
+  NODE_VERSION: 24.x
+
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: ./.github/actions/lint
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: ./.github/actions/typecheck
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
   run-tests:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22.x]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - uses: ./.github/actions/run-tests
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
 
   publish-npm:
-    needs: run-tests
+    needs: [lint, typecheck, run-tests]
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22.x]
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: ./.github/actions/setup
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ env.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
       - run: sudo apt-get install jq
       - run: jq ".version=\"${GITHUB_REF#refs/*/}\"" package.json > package-new.json && mv package-new.json package.json
       - run: cat package.json
-      - run: npm i -g npm@latest
-      - run: npm i -g pnpm
-      - run: pnpm i
       - run: pnpm publish-npm
 
   deploy-demo:
     needs: publish-npm
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [22.x]
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: ./.github/actions/setup
         with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm i -g pnpm
-      - run: pnpm i
+          node-version: ${{ env.NODE_VERSION }}
       - run: pnpm --prefix demo i
       - run: pnpm --prefix demo i atomic-spinner@latest
       - name: Set Github identity
