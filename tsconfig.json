@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "rootDir": "src",
     "outDir": "lib",
     "lib": ["dom", "dom.iterable", "esnext"],
     "declaration": true,
