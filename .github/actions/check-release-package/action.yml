@@ -1,0 +1,21 @@
+name: Check Release Package
+description: Build the package and verify that all declared release entrypoints are present in the packed artifact.
+
+inputs:
+  node-version:
+    description: Node.js version to use for the release-package validation.
+    required: true
+    type: string
+
+runs:
+  using: composite
+  steps:
+    - uses: ./.github/actions/setup
+      with:
+        node-version: ${{ inputs.node-version }}
+    - run: pnpm clean
+      shell: bash
+    - run: pnpm build
+      shell: bash
+    - run: pnpm check-release-package
+      shell: bash
