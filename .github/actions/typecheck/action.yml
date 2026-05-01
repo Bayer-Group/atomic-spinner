@@ -13,5 +13,5 @@ runs:
         node-version: ${{ inputs.node-version }}
     - run: pnpm typecheck
       shell: bash
-    - run: pnpm --prefix demo typecheck
+    - run: pnpm build && pnpm --prefix demo typecheck
       shell: bash
