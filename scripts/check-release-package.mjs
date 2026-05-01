@@ -36,6 +36,19 @@ try {
     )
   }
 
+  if (packageJson.exports) {
+    const exp = packageJson.exports['.']
+    if (exp) {
+      for (const [condition, path] of Object.entries(exp)) {
+        if (typeof path === 'string' && !packedFiles.has(path.replace('./', ''))) {
+          throw new Error(
+            `Package exports["."].${condition} entry "${path}" is missing from the packed artifact.`,
+          )
+        }
+      }
+    }
+  }
+
   console.log('Packed artifact contains all declared package entrypoints.')
 } finally {
   if (packResult.filename) {

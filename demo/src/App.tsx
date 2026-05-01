@@ -11,8 +11,8 @@ import {
 } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import { HexAlphaColorPicker, HexColorInput } from 'react-colorful'
-import SettingsBox from './SettingsBox'
-import DarkModeToggle from './DarkModeToggle'
+import SettingsBox from './SettingsBox.tsx'
+import DarkModeToggle from './DarkModeToggle.tsx'
 
 function App(): JSX.Element {
   const [atomSize, setAtomSize] = useState(defaultProps.atomSize)
@@ -46,12 +46,12 @@ function App(): JSX.Element {
 
   return (
     <Box sx={{ flexGrow: 1, padding: 5 }}>
-      <Grid container spacing={2} justifyContent="center">
-        <Grid container size={{ xs: 12 }} justifyContent="center">
+      <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
+        <Grid container size={{ xs: 12 }} sx={{ justifyContent: 'center' }}>
           <DarkModeToggle />
         </Grid>
         <Grid container size={{ xs: 12 }}>
-          <Grid size={{ xs: 12 }} display="flex" sx={{ minHeight: `${atomSize}px`, padding: 0 }} justifyContent="center">
+          <Grid size={{ xs: 12 }} sx={{ display: 'flex', minHeight: `${atomSize}px`, padding: 0, justifyContent: 'center' }}>
             <AtomicSpinner
               atomSize={atomSize}
               displayElectronPaths={displayElectronPaths}
