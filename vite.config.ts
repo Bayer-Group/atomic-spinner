@@ -4,7 +4,14 @@ import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
-  plugins: [react(), dts({ include: ['src'], exclude: ['**/*.cy.tsx'] })],
+  plugins: [
+    react(),
+    dts({
+      include: ['src'],
+      exclude: ['**/*.cy.tsx'],
+      bundleTypes: true,
+    }),
+  ],
   optimizeDeps: {
     include: [
       'react',
@@ -18,9 +25,9 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.tsx'),
       formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.esm.js' : 'index.js'),
+      fileName: (format) => (format === 'es' ? 'index.mjs' : 'index.cjs'),
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         exports: 'named',

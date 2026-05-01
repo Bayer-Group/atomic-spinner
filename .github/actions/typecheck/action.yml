@@ -11,5 +11,7 @@ runs:
     - uses: ./.github/actions/setup
       with:
         node-version: ${{ inputs.node-version }}
-    - run: pnpm tsc --noEmit
+    - run: pnpm typecheck
+      shell: bash
+    - run: pnpm build && pnpm --prefix demo typecheck
       shell: bash

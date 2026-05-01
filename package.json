@@ -5,9 +5,17 @@
   "author": "David Lounsbrough",
   "license": "MIT",
   "repository": "Bayer-Group/atomic-spinner",
-  "main": "lib/index.js",
-  "module": "lib/index.esm.js",
+  "type": "module",
+  "main": "lib/index.cjs",
+  "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
+    }
+  },
   "engines": {
     "node": ">=24"
   },
@@ -21,7 +29,8 @@
     "build-demo": "pnpm --prefix demo build",
     "lint": "eslint .",
     "test": "pnpm cypress run --component --config-file cypress/config.ts",
-    "test-interactive": "pnpm cypress open --config-file cypress/config.ts"
+    "test-interactive": "pnpm cypress open --config-file cypress/config.ts",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [
     "atomic",
@@ -44,6 +53,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@microsoft/api-extractor": "^7.58.7",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
