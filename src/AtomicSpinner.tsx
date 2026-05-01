@@ -1,8 +1,8 @@
 import * as React from 'react'
 
-import ElectronPath from './ElectronPath.js'
-import Electron from './Electron.js'
-import Nucleus from './Nucleus.js'
+import ElectronPath from './ElectronPath'
+import Electron from './Electron'
+import Nucleus from './Nucleus'
 
 export interface AtomicSpinnerProps {
   atomSize?: number

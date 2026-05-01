@@ -9,6 +9,7 @@ export default defineConfig({
     dts({
       include: ['src'],
       exclude: ['**/*.cy.tsx'],
+      bundleTypes: true,
     }),
   ],
   optimizeDeps: {
