@@ -28,7 +28,7 @@ importers:
         version: 8.60.0(@typescript-eslint/parser@8.60.0(eslint@10.4.1(jiti@1.21.7))(typescript@6.0.3))(eslint@10.4.1(jiti@1.21.7))(typescript@6.0.3)
       '@vitejs/plugin-react':
         specifier: ^6.0.1
-        version: 6.0.2(vite@8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))
+        version: 6.0.2(vite@8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))
       cypress:
         specifier: ^15.14.2
         version: 15.16.0
@@ -58,10 +58,10 @@ importers:
         version: 8.60.0(eslint@10.4.1(jiti@1.21.7))(typescript@6.0.3)
       vite:
         specifier: ^8.0.10
-        version: 8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
+        version: 8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
       vite-plugin-dts:
         specifier: ^5.0.0
-        version: 5.0.1(@microsoft/api-extractor@7.58.7(@types/node@25.6.0))(rolldown@1.0.3)(rollup@4.60.1)(typescript@6.0.3)(vite@8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))
+        version: 5.0.2(@microsoft/api-extractor@7.58.7(@types/node@25.6.0))(rolldown@1.0.3)(rollup@4.60.1)(typescript@6.0.3)(vite@8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))
 
   demo:
     dependencies:
@@ -125,10 +125,10 @@ importers:
         version: 19.2.3(@types/react@19.2.15)
       '@vitejs/plugin-react':
         specifier: ^6.0.1
-        version: 6.0.2(vite@8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))
+        version: 6.0.2(vite@8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))
       vite:
         specifier: ^8.0.10
-        version: 8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
+        version: 8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
 
 packages:
 
@@ -2419,8 +2419,8 @@ packages:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
 
-  unplugin-dts@1.0.1:
-    resolution: {integrity: sha512-EdJZxdWP4Tm/xhe58/zAge3Tu0OKDYygm8rucRrcCZ4XzgA31jexUKhaJuEMddOPBDs9ONnq6vwigbjeBqkfuw==}
+  unplugin-dts@1.0.2:
+    resolution: {integrity: sha512-VbNiMD0LMl/t6nJueGtrCp79N7ZO1nquxj/FUybJDnKwZGsnW2wjdwBSzA3QEHujoxmxZIptsG43hL7LzXE96w==}
     peerDependencies:
       '@microsoft/api-extractor': '>=7'
       '@rspack/core': ^1
@@ -2467,8 +2467,8 @@ packages:
     resolution: {integrity: sha512-ZZKSmDAEFOijERBLkmYfJ+vmk3w+7hOLYDNkRCuRuMJGEmqYNCNLyBBFwWKVMhfwaEF3WOd0Zlw86U/WC/+nYw==}
     engines: {'0': node >=0.6.0}
 
-  vite-plugin-dts@5.0.1:
-    resolution: {integrity: sha512-1L+x8bVPDhlI4kLzRIIGqO+b1VnvtY6CoHrU+riaipHJUAxayM0i1HObqeBv33Svil9hW64Z2KNiOn6UrKWCbA==}
+  vite-plugin-dts@5.0.2:
+    resolution: {integrity: sha512-lNeHS+dwGju6eRmNvZQt8Shwv9j3m98hbHse/lIbLq9q3yE2DcIOBBYQEVUF6tS0kOmv+VA9Z5FqmzFnGe4U8g==}
     peerDependencies:
       '@microsoft/api-extractor': '>=7'
       rollup: '>=3'
@@ -2481,8 +2481,8 @@ packages:
       vite:
         optional: true
 
-  vite@8.0.15:
-    resolution: {integrity: sha512-qpgllRxrLqwsMAGRdLhsEr9bepaOQk1rxH1xT2coBXLaEB/bfkqQj1j7RMxwMfnYrvO1ZnFMiwX+wBVgnsyn0g==}
+  vite@8.0.16:
+    resolution: {integrity: sha512-h9bXPmJichP5fLmVQo3PyaGSDE2n3aPuomeAlVRm0JLmt4rY6zmPKd59HYI4LNW8oTK7tlTsuC7l/m7awx9Jcw==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -3396,10 +3396,10 @@ snapshots:
       '@typescript-eslint/types': 8.60.0
       eslint-visitor-keys: 5.0.1
 
-  '@vitejs/plugin-react@6.0.2(vite@8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))':
+  '@vitejs/plugin-react@6.0.2(vite@8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))':
     dependencies:
       '@rolldown/pluginutils': 1.0.1
-      vite: 8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
+      vite: 8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
 
   '@volar/language-core@2.4.28':
     dependencies:
@@ -4870,7 +4870,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-dts@1.0.1(@microsoft/api-extractor@7.58.7(@types/node@25.6.0))(rolldown@1.0.3)(rollup@4.60.1)(typescript@6.0.3)(vite@8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)):
+  unplugin-dts@1.0.2(@microsoft/api-extractor@7.58.7(@types/node@25.6.0))(rolldown@1.0.3)(rollup@4.60.1)(typescript@6.0.3)(vite@8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)):
     dependencies:
       '@rollup/pluginutils': 5.4.0(rollup@4.60.1)
       '@volar/typescript': 2.4.28
@@ -4885,7 +4885,7 @@ snapshots:
       '@microsoft/api-extractor': 7.58.7(@types/node@25.6.0)
       rolldown: 1.0.3
       rollup: 4.60.1
-      vite: 8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
+      vite: 8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -4910,13 +4910,13 @@ snapshots:
       core-util-is: 1.0.2
       extsprintf: 1.3.0
 
-  vite-plugin-dts@5.0.1(@microsoft/api-extractor@7.58.7(@types/node@25.6.0))(rolldown@1.0.3)(rollup@4.60.1)(typescript@6.0.3)(vite@8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)):
+  vite-plugin-dts@5.0.2(@microsoft/api-extractor@7.58.7(@types/node@25.6.0))(rolldown@1.0.3)(rollup@4.60.1)(typescript@6.0.3)(vite@8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)):
     dependencies:
-      unplugin-dts: 1.0.1(@microsoft/api-extractor@7.58.7(@types/node@25.6.0))(rolldown@1.0.3)(rollup@4.60.1)(typescript@6.0.3)(vite@8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))
+      unplugin-dts: 1.0.2(@microsoft/api-extractor@7.58.7(@types/node@25.6.0))(rolldown@1.0.3)(rollup@4.60.1)(typescript@6.0.3)(vite@8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0))
     optionalDependencies:
       '@microsoft/api-extractor': 7.58.7(@types/node@25.6.0)
       rollup: 4.60.1
-      vite: 8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
+      vite: 8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0)
     transitivePeerDependencies:
       - '@rspack/core'
       - '@vue/language-core'
@@ -4926,7 +4926,7 @@ snapshots:
       - typescript
       - webpack
 
-  vite@8.0.15(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0):
+  vite@8.0.16(@types/node@25.6.0)(jiti@1.21.7)(terser@5.46.0):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
