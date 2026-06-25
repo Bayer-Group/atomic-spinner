@@ -1,3 +1,5 @@
 packages:
   - './*'
   - './demo/*'
+allowBuilds:
+  cypress: false
